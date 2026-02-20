@@ -6,6 +6,9 @@ horary-app_data/
 # Dependencies
 node_modules/
 
+# Generated data
+public/data/
+
 # IDE / Tools
 .claude/
 .DS_Store
