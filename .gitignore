@@ -1,0 +1,11 @@
+specification.md
+issues/
+task_report/
+horary-app_data/
+
+# Dependencies
+node_modules/
+
+# IDE / Tools
+.claude/
+.DS_Store
