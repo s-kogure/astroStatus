@@ -123,11 +123,18 @@
 
   <script>
     const TZ_OFFSET = 9; // JST
+    const TZ_OFFSET_MS = TZ_OFFSET * 60 * 60 * 1000;
+
+    function getJstDate(utcStr) {
+      if (!utcStr) return null;
+      const utcMs = Date.parse(utcStr);
+      if (Number.isNaN(utcMs)) return null;
+      return new Date(utcMs + TZ_OFFSET_MS);
+    }
 
     function toJst(utcStr) {
-      if (!utcStr) return '-';
-      const d = new Date(utcStr);
-      d.setHours(d.getHours() + TZ_OFFSET);
+      const d = getJstDate(utcStr);
+      if (!d) return '-';
       const m = String(d.getUTCMonth() + 1).padStart(2, '0');
       const day = String(d.getUTCDate()).padStart(2, '0');
       const h = String(d.getUTCHours()).padStart(2, '0');
@@ -136,9 +143,8 @@
     }
 
     function toJstDate(utcStr) {
-      if (!utcStr) return '-';
-      const d = new Date(utcStr);
-      d.setHours(d.getHours() + TZ_OFFSET);
+      const d = getJstDate(utcStr);
+      if (!d) return '-';
       const m = String(d.getUTCMonth() + 1).padStart(2, '0');
       const day = String(d.getUTCDate()).padStart(2, '0');
       const h = String(d.getUTCHours()).padStart(2, '0');
@@ -152,6 +158,9 @@
           fetch('data/current.json'),
           fetch('data/schedule.json'),
         ]);
+        if (!currentRes.ok || !scheduleRes.ok) {
+          throw new Error(`HTTP error: current=${currentRes.status}, schedule=${scheduleRes.status}`);
+        }
         const current = await currentRes.json();
         const schedule = await scheduleRes.json();
 
@@ -199,6 +208,7 @@
       } else {
         voidsEl.innerHTML = data.upcomingVoids.map(v =>
           `<div class="void-upcoming">
+            ${v.startedBeforeRangeStart ? '<span style="color:#fbbf24">継続中</span> ' : ''}
             ${toJst(v.startUtc)} - ${toJst(v.endUtc)}
             <span style="color:#64748b">(${v.durationHours}h)</span>
             ${v.moonSign}

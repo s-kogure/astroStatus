@@ -83,6 +83,8 @@ async function generateCurrent() {
     endUtc: formatUtc(v.endUtc),
     durationHours: Math.round(v.durationHours * 10) / 10,
     moonSign: v.moonSign,
+    startedBeforeRangeStart: !!v.startedBeforeRangeStart,
+    startEstimated: !!v.startEstimated,
   }));
 
   const data = {

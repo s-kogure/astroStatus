@@ -8,7 +8,7 @@
  * こちらで拡張版を提供する。
  */
 
-const { calcPlanets, localToJulday, juldayToUtc } = require('./ephemeris');
+const { calcPlanets, juldayToUtc } = require('./ephemeris');
 const { getVoidOfCourseStatus } = require('@astroquery/astro-core');
 const { MODERN_PLANETS, VOID_ASPECT_TARGETS_MODERN } = require('../constants/planets');
 const { getSignName } = require('./retrograde');
@@ -65,35 +65,64 @@ async function getVoidStatus(julday, aspectTargets) {
  * @returns {Promise<Array<Object>>} ボイド区間の配列
  */
 async function findVoidPeriods(jdStart, jdEnd, stepHours = 0.5, aspectTargets) {
+  if (jdEnd <= jdStart) return [];
+
   const stepDays = stepHours / 24;
+  if (stepDays <= 0) {
+    throw new Error('stepHours must be greater than 0');
+  }
+
   const periods = [];
   let currentVoid = null;
+  let prevJd = jdStart;
+  let prevStatus = await getVoidStatus(jdStart, aspectTargets);
 
-  for (let jd = jdStart; jd <= jdEnd; jd += stepDays) {
-    const status = await getVoidStatus(jd, aspectTargets);
+  // 期間開始時点ですでにボイド中なら、直前へ遡って実開始時刻を推定する
+  if (prevStatus.isVoid) {
+    const startInfo = await findVoidStartFromOngoing(jdStart, stepDays, aspectTargets);
+    currentVoid = {
+      startJd: startInfo.startJd,
+      startUtc: await juldayToUtc(startInfo.startJd),
+      moonSign: prevStatus.moonSign,
+      startedBeforeRangeStart: true,
+      startEstimated: !startInfo.precise,
+    };
+  }
 
-    if (status.isVoid && !currentVoid) {
-      // ボイド開始を検出
+  for (let jd = jdStart + stepDays; jd <= jdEnd; jd += stepDays) {
+    const currStatus = await getVoidStatus(jd, aspectTargets);
+
+    if (!prevStatus.isVoid && currStatus.isVoid && !currentVoid) {
+      // ボイド開始を検出（ステップ間の遷移時刻を二分探索で補間）
+      const startJd = await bisectVoidTransition(prevJd, jd, true, aspectTargets);
       currentVoid = {
-        startJd: jd,
-        startUtc: await juldayToUtc(jd),
-        moonSign: status.moonSign,
+        startJd,
+        startUtc: await juldayToUtc(startJd),
+        moonSign: currStatus.moonSign,
+        startedBeforeRangeStart: false,
+        startEstimated: false,
       };
-    } else if (!status.isVoid && currentVoid) {
-      // ボイド終了を検出
-      const endUtc = await juldayToUtc(jd);
-      const durationHours = (jd - currentVoid.startJd) * 24;
+    } else if (prevStatus.isVoid && !currStatus.isVoid && currentVoid) {
+      // ボイド終了を検出（ステップ間の遷移時刻を二分探索で補間）
+      const endJd = await bisectVoidTransition(prevJd, jd, false, aspectTargets);
+      const endUtc = await juldayToUtc(endJd);
+      const durationHours = (endJd - currentVoid.startJd) * 24;
       periods.push({
         type: 'void_of_course',
         startJd: currentVoid.startJd,
         startUtc: currentVoid.startUtc,
-        endJd: jd,
+        endJd,
         endUtc,
         durationHours,
         moonSign: currentVoid.moonSign,
+        startedBeforeRangeStart: currentVoid.startedBeforeRangeStart,
+        startEstimated: currentVoid.startEstimated,
       });
       currentVoid = null;
     }
+
+    prevJd = jd;
+    prevStatus = currStatus;
   }
 
   // 期間終了時にまだボイド中の場合
@@ -107,10 +136,68 @@ async function findVoidPeriods(jdStart, jdEnd, stepHours = 0.5, aspectTargets) {
       endUtc: status.voidEndsAtUtc || await juldayToUtc(jdEnd),
       durationHours: ((status.voidEndsAtJd || jdEnd) - currentVoid.startJd) * 24,
       moonSign: currentVoid.moonSign,
+      startedBeforeRangeStart: currentVoid.startedBeforeRangeStart,
+      startEstimated: currentVoid.startEstimated,
     });
   }
 
   return periods;
+}
+
+/**
+ * 期間開始時点で進行中のボイドの開始時刻を、指定日数まで遡って探索する
+ * （通常のボイド継続時間より十分長い5日を上限にする）
+ */
+async function findVoidStartFromOngoing(jdStart, stepDays, aspectTargets, maxBacktrackDays = 5) {
+  let highJd = jdStart;
+  let lowJd = jdStart - stepDays;
+  const minJd = jdStart - maxBacktrackDays;
+
+  while (lowJd >= minJd) {
+    const lowStatus = await getVoidStatus(lowJd, aspectTargets);
+    if (!lowStatus.isVoid) {
+      const startJd = await bisectVoidTransition(lowJd, highJd, true, aspectTargets);
+      return { startJd, precise: true };
+    }
+    highJd = lowJd;
+    lowJd -= stepDays;
+  }
+
+  return { startJd: jdStart, precise: false };
+}
+
+/**
+ * ボイド状態の遷移境界を二分探索で求める
+ * @param {number} jdNonVoid - 非ボイド側の時刻
+ * @param {number} jdVoid - ボイド側の時刻
+ * @param {boolean} nonVoidToVoid - true: 非ボイド→ボイド, false: ボイド→非ボイド
+ */
+async function bisectVoidTransition(jdA, jdB, nonVoidToVoid, aspectTargets, iterations = 25) {
+  let low = jdA;
+  let high = jdB;
+
+  for (let i = 0; i < iterations; i++) {
+    const mid = (low + high) / 2;
+    const midStatus = await getVoidStatus(mid, aspectTargets);
+
+    if (nonVoidToVoid) {
+      // low: 非ボイド, high: ボイド
+      if (midStatus.isVoid) {
+        high = mid;
+      } else {
+        low = mid;
+      }
+    } else {
+      // low: ボイド, high: 非ボイド
+      if (midStatus.isVoid) {
+        low = mid;
+      } else {
+        high = mid;
+      }
+    }
+  }
+
+  return (low + high) / 2;
 }
 
 module.exports = {
