@@ -1,0 +1,29 @@
+:root {
+  --white: #fff;
+
+  --primary: rgba(58,58,60,1);
+  --secondary1: rgba(99,99,102,1);
+  --secondary1: rgba(142,142,147,1);
+
+  --color-normally: rgba(52,199,89,1);
+  --color-notice1: rgba(255,204,0,1);
+  --color-notice2: rgba(255,141,40,1);
+  --color-warn: rgba(255,45,85,1);
+
+  // --space-s: clamp(8px,2.04vw,10px);
+  // --space-m: clamp(16px,4.07vw,20px);
+  // --space-l: clamp(32px,8.14vw,30px);
+
+  --space-s: min(2.04vw,1rem);
+  --space-m: min(4.07vw,1rem);
+  --space-l: min(8.14vw,2rem);
+
+
+  font-size: 16px; /* 1rem = 16px */
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  alignment-baseline: baseline;
+  
+  /* mobile settings */
+
+}

@@ -1,0 +1,292 @@
+// 定義変数
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+    background: var(--white);
+    margin: 0;
+    padding: 0;
+    color: var(--primary);
+}
+
+header,main,footer {
+  width: 100%;
+}
+
+.header_lead {
+    display: block;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    color: var(--primary);
+    background: var(--white);
+    margin:  min(2rem,6rem) auto 0;
+    width: min( 77.3vw , 32rem);
+    padding: 4.07vw 2.55vw;
+}
+
+.logo_title {
+    font-size: min( 8.14vw, 3rem );
+    text-align: center;
+}
+
+main {
+  padding: 4rem 1rem 2rem;
+}
+
+.main_wrapper {
+    width: 100%;
+}
+
+.celestial_list__item {
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  margin-top: var(--space-m);
+  padding: calc( var(--space-m) *0.75);
+
+  &.default {
+    background-color: var(--white);
+  }
+
+  &.moon_status {
+    border-width: 2px;
+  }
+
+}
+
+
+
+.status__main {
+  display: flex;
+  width: 100%;
+  height: min(6.1vw,1.5rem);
+  vertical-align: baseline;
+
+    img.toggle_btn {
+      margin-left: auto;
+      display: inline-flex;
+    }
+
+.celestial_list__item[open] .toggle_btn { 
+        transform: rotate(180deg);
+        animation: rotate-z 0.2s linear;
+
+          @keyframes rotate-z {
+          from { transform: rotateZ(0deg); }
+          to { transform: rotateZ(180deg); }
+        }
+      }
+
+  }
+
+
+.celestial_name {
+  display: inline-block;
+
+  img {
+    display: inline-block;
+    height: min(5.6vw,22px);
+    vertical-align: middle;
+  }
+
+  .planets {
+      display: inline-block;
+      line-height: 1.2;
+      font-weight: bold;
+      font-size: min(3.8vw, 1.2rem );
+      vertical-align: middle;
+
+    &::before {
+      vertical-align: baseline;
+      padding-left: var(--space-s);
+      padding-right: calc( var(--space-s) * .5 );
+      font-weight: normal;
+      line-height: 1;
+      display: inline-block;
+    }
+
+    &::after {
+      content: ":";
+      display: inline-block;
+    }
+  }
+}
+
+p.zodiac {
+      display: inline-block;
+      line-height: 1.8;
+      font-weight: bold;
+      font-size: min(3.82vw, 1.2rem );
+      vertical-align: baseline;
+      padding-left: var(--space-s);
+
+  &::before {
+    vertical-align: baseline;
+    padding-right: calc( var(--space-s) * .5 );
+    line-height: 1;
+    display: inline-block;
+  }
+}
+
+
+  span.progression {
+      &__prograde {
+        display: none;
+      }
+
+      &__rertograde {
+        font-weight: bold;
+        display: inline-block;
+        padding-left: 0.25rem;
+        vertical-align: baseline;
+        font-size: 1rem;
+        line-height: 1;
+        padding-top: min(1.4vw,0.5rem);
+      }
+  }
+
+  span.label {
+        font-size: min(3.6vw,0.75rem);
+        font-weight: bold;
+        margin-left: var(--space-s);
+        display: inline-block;
+        padding: 0 8px ;
+        // line-height: 1.6;
+        vertical-align: bottom;
+        height: min(5vw,20px);
+        min-width: min(14.5vw,6rem);
+        border-radius: 4px;
+        margin-top: min(0.55vw,0.5rem);
+        // margin-top: calc( var(--space-s) * .5 );
+        text-align: center;
+
+    &.domicile {
+      border: 1px solid rgba(0,137,50,1);
+    }
+
+    &.exaltation {
+      border: 1px solid var(--color-normally);
+    }
+
+    &.fall {
+      border: 1px solid rgba(161,106,0,1);
+    }
+
+    &.detriment {
+      border: 1px solid var(--color-notice2);
+    }
+  }
+
+.suatus_detail {
+  
+    display: none;
+
+    .status__moon_phase,
+    .status__void,
+    .status__eclipse,
+    .status__next_void,
+    .status__retrograde_term,
+    .status__retrograde_next,
+    .status__ingress {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: min(3.56vw, 1rem);
+      line-height: 1.4;
+
+      h4,p {
+        padding-right: calc( var(--space-s) * .5 );
+        display: inline-block;
+        line-height: 1.6;
+      }
+      h4::after {
+        content: ":";
+      }
+    }
+
+}
+
+.celestial_list__item[open] .suatus_detail,
+.celestial_list__item[open] .suatus_detail {
+      display: block;
+      width: 100%;
+      margin-top: var(--space-m);
+}
+
+
+
+@media screen and (min-width: 1024px) {
+
+
+.main_wrapper {
+      max-width: 768px;
+      margin: auto;
+    }
+
+
+
+    .status__main {
+
+      .celestial_name {
+        font-size: max(0.95rem);
+
+        .planets {
+          width: 144px;
+        }
+      }
+
+      p.zodiac {
+        line-height: 1.4;
+      }
+
+        span.progression__rertograde {
+        font-weight: bold;
+        display: inline-block;
+        padding-left: 0.25rem;
+        vertical-align: baseline;
+        line-height: 1.4;
+        padding-top: 0.3em;
+      }
+
+      span.label {
+        font-size: min(3.6vw,0.75rem);
+        font-weight: bold;
+        margin-left: var(--space-s);
+        display: inline-block;
+        padding: 0 6px ;
+        line-height: 1.6;
+        vertical-align: middle;
+        height: min(4.6vw,20px);
+        min-width: min(14.5vw,6rem);
+        border-radius: 4px;
+        margin-top: 0.25rem;
+        text-align: center;
+      }
+
+      .toggle.toggle_btn {
+        display: none;
+      }  
+    }
+
+
+ .status__main.toggle .toggle_btn {
+    display: none;
+   }
+
+   .status_detail {
+    display: block;
+    
+      h4,p {
+        font-size: max(0.9em);
+      }
+    
+      li:first-of-type {
+        margin-top: var(--space-s) ;
+      }
+
+      li + li {
+        margin-top: calc( var(--space-s) * 0.25 );
+      }
+    }
+  
+  }

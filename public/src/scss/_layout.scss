@@ -126,9 +126,8 @@ img.status_ico {
   }
 }
 
-data.zodiac {
+var.zodiac {
   margin-left: $size_smallest;
-  padding-left: $size_small;
   font-weight: bold;
   display: inline-block;
 }
@@ -185,20 +184,25 @@ data.zodiac {
 .toggle_btn {
   margin-left: auto;
   display: inline-block;
-  transition: transform 0.28s ease;
-  transform-origin: center center;
 }
 
-.summary_list {
-  cursor: pointer;
+.moon_status > .summary_list {
+    // pointer-events: none; /* マウスイベントを無効化 */
+    // cursor: default;     /* ポインターを矢印に戻す */
 
-  &::-webkit-details-marker {
-    display: none;
-  }
+    &::-webkit-details-marker {
+      display: none;
+    }
+    
 }
 
-.planets_item[open] .toggle_btn {
-  transform: rotate(180deg);
+.summary_list[open] + .detail_list {
+  // animation soon
+}
+
+.moon_status > .summary_list[open] + .detail_list ,
+.moon_status > .summary_list:not[open] + .detail_list {
+  display: block;
 }
 
 
@@ -208,22 +212,10 @@ data.zodiac {
 /*-------- PLANET STATUS ----------*/
 
 .detail_list {
-  margin-top: 0;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  pointer-events: none;
+  margin-top: $size_large;
   display: flex;
   flex-direction: column;
   gap: $size_smallest 0;
-  transition: max-height 0.35s ease, opacity 0.24s ease, margin-top 0.35s ease;
-}
-
-.planets_item[open] > .detail_list {
-  margin-top: $size_large;
-  max-height: 28rem;
-  opacity: 1;
-  pointer-events: auto;
 }
 
 
@@ -255,14 +247,6 @@ data.zodiac {
 }
 
 
-@media screen and (min-width: 768px) {
-
-  h3.planet_info {
-    display: inline-block;
-    width: 8.5rem;
-  }
-}
-
 @media screen and (min-width: 1024px) {
 
 
@@ -280,7 +264,7 @@ data.zodiac {
   }
 
   .planets_item {
-    transition: background-color 0.3s ease;
+    transition: 0.5 ease;
 
     &:hover {
       background-color: #eee;
@@ -393,19 +377,9 @@ data.zodiac {
 
   .bg_star:nth-of-type(10) {
         left: 73%;
-        top: 64%;
+        top: 614%;
         rotate: 125deg;
         transform: scale(0.8);
-    }
+      }
 
-}
-
-/*--------- FOOTER ---------------*/
-footer {
-  background-color: #001F43;
-  color: var(--white);
-  font-size: 0.75rem;
-  text-align: center;
-  line-height: 30px;
-  height: 30px;
 }
