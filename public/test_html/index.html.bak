@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/css/reset.min.css">
+  <link rel="stylesheet" href="./src/css/style.css">
+  <link rel="stylesheet" href="./src/css/icons.css">
+  <link rel="preload" href="./src/fonts/Untitled.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <title>astro Status</title>
+  <script type="module" src="./src/js/app.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="header_lead">
+      <h1 class="logo_title">astroStatus</h1>
+    </div>
+  </header>
+  <main>
+    <section class="main_wrapper">
+      <div class="main_content__head">
+        <h2>now planets data:</h2>
+        <p class="update"><span>last update:</span><span class="yyyymmdd">yyyy-mm-dd hh:mm</span></p>
+      </div>
+
+      <article class="celestial">
+
+        <!-- moon -->
+        <details class="celestial_list__item moon_status">
+          <summary class="status__main">
+            <h3 class="celestial_name">
+              <img src="./src/images/icons/status/status-ok.png" alt="status ok">
+              <span class="planets icon-moon" aria-label="moon">Moon</span>
+            </h3>
+            <p class="zodiac icon-aries" aria-label="aries">18°48'</p>
+            <span class="label domicile">Domicile</span>
+          </summary>
+          <ul class="suatus_detail default">
+            <li class="status__moon_phase">
+              <h4>次の満月</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__void">
+              <h4>void</h4>
+              <p>none</p>
+            </li>
+            <li class="status__eclipse">
+              <h4>eclipse</h4>
+              <p>none</p>
+            </li>
+            <li class="status__next_void">
+              <h4>next void</h4>
+              <p>mm月dd日(曜) hh:mm 〜 mm月dd日(曜) hh:mm</p>
+            </li>
+          </ul>
+        </details>
+
+        <!-- mercury -->
+        <details class="celestial_list__item" name="accordion">
+          <summary class="status__main">
+            <h3 class="celestial_name">
+              <img src="./src/images/icons/status/status-ok.png" alt="status caution">
+              <span class="planets icon-mercury" aria-label="mercury">Mercury</span>
+            </h3>
+            <p class="zodiac icon-sagittarius" aria-label="sagittarius">18°48'</p>
+            <span class="progression__prograde">R</span>
+            <span class="label detriment">Detriment</span>
+            <img class="toggle_btn" src="./src/images/icons/chevron_down.svg" alt="toggle" aria-label="button">
+          </summary>
+          <ul class="suatus_detail">
+            <li class="status__retrograde_term">
+              <h4>逆行終了</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__retrograde_next">
+              <h4>次回の逆行期間</h4>
+              <p>mm月dd日(曜) hh:mm 〜 mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__ingress">
+              <h4>イングレス予定</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+          </ul>
+        </details>
+
+        <!-- venus -->
+        <details class="celestial_list__item" name="accordion">
+          <summary class="status__main">
+            <h3 class="celestial_name">
+              <img src="./src/images/icons/status/status-caution.png" alt="status caution">
+              <span class="planets icon-venus" aria-label="venus">Venus</span>
+            </h3>
+            <p class="zodiac icon-sagittarius" aria-label="sagittarius">18°48'</p>
+            <span class="progression__rertograde">R</span>
+            <span class="label exaltation">Exaltation</span>
+            <img class="toggle_btn" src="./src/images/icons/chevron_down.svg" alt="toggle" aria-label="button">
+          </summary>
+          <ul class="suatus_detail">
+            <li class="status__retrograde_term">
+              <h4>逆行終了</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__retrograde_next">
+              <h4>次回の逆行期間</h4>
+              <p>mm月dd日(曜) hh:mm 〜 mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__ingress">
+              <h4>イングレス予定</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+          </ul>
+        </details>
+
+        <!-- mars -->
+        <details class="celestial_list__item" name="accordion">
+          <summary class="status__main">
+            <h3 class="celestial_name">
+              <img src="./src/images/icons/status/status-notice.png" alt="status notice">
+              <span class="planets icon-mars" aria-label="mars">Mars</span>
+            </h3>
+            <p class="zodiac icon-sagittarius" aria-label="sagittarius">18°48'</p>
+            <span class="progression__rertograde">R</span>
+            <span class="label fall">Fall</span>
+            <img class="toggle_btn close" src="./src/images/icons/chevron_down.svg" alt="toggle" aria-label="button">
+          </summary>
+          <ul class="suatus_detail">
+            <li class="status__retrograde_term">
+              <h4>逆行終了</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__retrograde_next">
+              <h4>次回の逆行期間</h4>
+              <p>mm月dd日(曜) hh:mm 〜 mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__ingress">
+              <h4>イングレス予定</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+          </ul>
+        </details>
+
+        <!-- jipiter -->
+        <details class="celestial_list__item" name="accordion">
+          <summary class="status__main">
+            <h3 class="celestial_name">
+              <img src="./src/images/icons/status/status-ok.png" alt="status ok">
+              <span class="planets icon-jupiter" aria-label="jupiter">Jupiter</span>
+            </h3>
+            <p class="zodiac icon-sagittarius" aria-label="sagittarius">18°48'</p>
+            <span class="progression__rertograde">R</span>
+            <span class="label exaltation">Exaltation</span>
+            <img class="toggle_btn" src="./src/images/icons/chevron_down.svg" alt="toggle" aria-label="button">
+          </summary>
+          <ul class="suatus_detail">
+            <li class="status__retrograde_term">
+              <h4>逆行終了</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__retrograde_next">
+              <h4>次回の逆行期間</h4>
+              <p>mm月dd日(曜) hh:mm 〜 mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__ingress">
+              <h4>イングレス予定</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+          </ul>
+        </details>
+
+        <!-- saturn -->
+        <details class="celestial_list__item" name="accordion">
+          <summary class="status__main">
+            <h3 class="celestial_name">
+              <img src="./src/images/icons/status/status-notice.png" alt="status notice">
+              <span class="planets icon-saturn" aria-label="saturn">Saturn</span>
+            </h3>
+            <p class="zodiac icon-sagittarius" aria-label="sagittarius">18°48'</p>
+            <span class="progression__rertograde">R</span>
+            <span class="label fall">Fall</span>
+            <img class="toggle_btn close" src="./src/images/icons/chevron_down.svg" alt="toggle" aria-label="button">
+          </summary>
+          <ul class="suatus_detail">
+            <li class="status__retrograde_term">
+              <h4>逆行終了</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__retrograde_next">
+              <h4>次回の逆行期間</h4>
+              <p>mm月dd日(曜) hh:mm 〜 mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__ingress">
+              <h4>イングレス予定</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+          </ul>
+        </details>
+
+        <!-- uranus -->
+        <details class="celestial_list__item" name="accordion">
+          <summary class="status__main">
+            <h3 class="celestial_name">
+              <img src="./src/images/icons/status/status-ok.png" alt="status ok">
+              <span class="planets icon-uranus" aria-label="uranus">Uranus</span>
+            </h3>
+            <p class="zodiac icon-sagittarius" aria-label="sagittarius">18°48'</p>
+            <span class="progression__prograde"></span>
+            <span class="label"></span>
+            <img class="toggle_btn close" src="./src/images/icons/chevron_down.svg" alt="toggle" aria-label="button">
+          </summary>
+          <ul class="suatus_detail">
+            <li class="status__retrograde_term">
+              <h4>逆行終了</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__retrograde_next">
+              <h4>次回の逆行期間</h4>
+              <p>mm月dd日(曜) hh:mm 〜 mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__ingress">
+              <h4>イングレス予定</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+          </ul>
+        </details>
+
+        <!-- neptune -->
+        <details class="celestial_list__item" name="accordion">
+          <summary class="status__main">
+            <h3 class="celestial_name">
+              <img src="./src/images/icons/status/status-ok.png" alt="status ok">
+              <span class="planets icon-neptune" aria-label="neptune">Neptune</span>
+            </h3>
+            <p class="zodiac icon-sagittarius" aria-label="sagittarius">18°48'</p>
+            <span class="progression__prograde"></span>
+            <span class="label"></span>
+            <img class="toggle_btn close" src="./src/images/icons/chevron_down.svg" alt="toggle" aria-label="button">
+          </summary>
+          <ul class="suatus_detail">
+            <li class="status__retrograde_term">
+              <h4>逆行終了</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__retrograde_next">
+              <h4>次回の逆行期間</h4>
+              <p>mm月dd日(曜) hh:mm 〜 mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__ingress">
+              <h4>イングレス予定</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+          </ul>
+        </details>
+
+        <!-- pluto -->
+        <details class="celestial_list__item" name="accordion">
+          <summary class="status__main">
+            <h3 class="celestial_name">
+              <img src="./src/images/icons/status/status-ok.png" alt="status ok">
+              <span class="planets icon-pluto" aria-label="pluto">Pluto</span>
+            </h3>
+            <p class="zodiac icon-sagittarius" aria-label="sagittarius">18°48'</p>
+            <span class="progression__prograde"></span>
+            <span class="label"></span>
+            <img class="toggle_btn close" src="./src/images/icons/chevron_down.svg" alt="toggle" aria-label="button">
+          </summary>
+          <ul class="suatus_detail">
+            <li class="status__retrograde_term">
+              <h4>逆行終了</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__retrograde_next">
+              <h4>次回の逆行期間</h4>
+              <p>mm月dd日(曜) hh:mm 〜 mm月dd日(曜) hh:mm</p>
+            </li>
+            <li class="status__ingress">
+              <h4>イングレス予定</h4>
+              <p>mm月dd日(曜) hh:mm</p>
+            </li>
+          </ul>
+        </details>
+
+      </article>
+
+    </section>
+  </main>
+  <footer>
+
+  </footer>
+</body>
+
+</html>
