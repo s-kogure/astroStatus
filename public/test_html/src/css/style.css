@@ -168,7 +168,7 @@ data.zodiac {
   border: 1px solid var(--color-notice2);
 }
 .dignity_label.none {
-  display: none;
+  display: none !important;
 }
 
 .toggle_btn {

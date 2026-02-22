@@ -322,22 +322,20 @@ function renderPlanetDetails(card, planet, events, nowMs) {
     if (retroTermData) retroTermData.textContent = nextDirect ? formatJst(nextDirect.utc) : 'none';
 
     // 逆行度数: 現在の逆行期間の開始度数〜終了度数
-    // 逆行中なので、直前のstation_retrogradeと次のstation_directを探す
-    if (retroDegTitle) retroDegTitle.textContent = '逆行の度数';
-    if (retroDegData) {
-      // 全イベントから直近のstation_retrograde（過去も含む）を探す
+    if (retroDeg) {
       const allRetroStarts = events.filter((e) => e.type === 'station_retrograde');
       const currentRetroStart = allRetroStarts
         .filter((e) => (getUtcMs(e.utc) || 0) <= nowMs)
         .pop();
       if (currentRetroStart && nextDirect) {
-        const startDeg = formatDegree(currentRetroStart.degreeInSign);
-        const endDeg = formatDegree(nextDirect.degreeInSign);
-        const startSign = currentRetroStart.sign || '';
-        const endSign = nextDirect.sign || '';
-        retroDegData.textContent = `${startDeg} ${startSign} 〜 ${endDeg} ${endSign}`;
+        retroDeg.style.display = '';
+        if (retroDegData) {
+          const startDeg = formatDegree(currentRetroStart.degreeInSign);
+          const endDeg = formatDegree(nextDirect.degreeInSign);
+          retroDegData.textContent = `${startDeg} ${currentRetroStart.sign || ''} 〜 ${endDeg} ${nextDirect.sign || ''}`;
+        }
       } else {
-        retroDegData.textContent = 'none';
+        retroDeg.style.display = 'none';
       }
     }
   } else {
@@ -353,17 +351,17 @@ function renderPlanetDetails(card, planet, events, nowMs) {
       }
     }
 
-    // 逆行度数: 次回の逆行の度数範囲
-    if (retroDegTitle) retroDegTitle.textContent = '逆行の度数';
-    if (retroDegData) {
+    // 逆行度数: 次回の逆行データが揃っている場合のみ表示
+    if (retroDeg) {
       if (nextRetroStart && nextRetroEnd) {
-        const startDeg = formatDegree(nextRetroStart.degreeInSign);
-        const endDeg = formatDegree(nextRetroEnd.degreeInSign);
-        const startSign = nextRetroStart.sign || '';
-        const endSign = nextRetroEnd.sign || '';
-        retroDegData.textContent = `${startDeg} ${startSign} 〜 ${endDeg} ${endSign}`;
+        retroDeg.style.display = '';
+        if (retroDegData) {
+          const startDeg = formatDegree(nextRetroStart.degreeInSign);
+          const endDeg = formatDegree(nextRetroEnd.degreeInSign);
+          retroDegData.textContent = `${startDeg} ${nextRetroStart.sign || ''} 〜 ${endDeg} ${nextRetroEnd.sign || ''}`;
+        }
       } else {
-        retroDegData.textContent = 'none';
+        retroDeg.style.display = 'none';
       }
     }
   }
