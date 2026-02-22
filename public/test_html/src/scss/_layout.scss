@@ -184,25 +184,20 @@ var.zodiac {
 .toggle_btn {
   margin-left: auto;
   display: inline-block;
+  transition: transform 0.28s ease;
+  transform-origin: center center;
 }
 
-.moon_status > .summary_list {
-    // pointer-events: none; /* マウスイベントを無効化 */
-    // cursor: default;     /* ポインターを矢印に戻す */
+.summary_list {
+  cursor: pointer;
 
-    &::-webkit-details-marker {
-      display: none;
-    }
-    
+  &::-webkit-details-marker {
+    display: none;
+  }
 }
 
-.summary_list[open] + .detail_list {
-  // animation soon
-}
-
-.moon_status > .summary_list[open] + .detail_list ,
-.moon_status > .summary_list:not[open] + .detail_list {
-  display: block;
+.planets_item[open] .toggle_btn {
+  transform: rotate(180deg);
 }
 
 
@@ -212,10 +207,22 @@ var.zodiac {
 /*-------- PLANET STATUS ----------*/
 
 .detail_list {
-  margin-top: $size_large;
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   gap: $size_smallest 0;
+  transition: max-height 0.35s ease, opacity 0.24s ease, margin-top 0.35s ease;
+}
+
+.planets_item[open] > .detail_list {
+  margin-top: $size_large;
+  max-height: 28rem;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 
@@ -377,9 +384,9 @@ var.zodiac {
 
   .bg_star:nth-of-type(10) {
         left: 73%;
-        top: 614%;
+        top: 64%;
         rotate: 125deg;
         transform: scale(0.8);
-      }
+    }
 
 }

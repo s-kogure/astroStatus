@@ -173,23 +173,39 @@ var.zodiac {
 .toggle_btn {
   margin-left: auto;
   display: inline-block;
+  transition: transform 0.28s ease;
+  transform-origin: center center;
 }
 
-.moon_status > .summary_list::-webkit-details-marker {
+.summary_list {
+  cursor: pointer;
+}
+.summary_list::-webkit-details-marker {
   display: none;
 }
 
-.moon_status > .summary_list[open] + .detail_list,
-.moon_status > .summary_list:not[open] + .detail_list {
-  display: block;
+.planets_item[open] .toggle_btn {
+  transform: rotate(180deg);
 }
 
 /*-------- PLANET STATUS ----------*/
 .detail_list {
-  margin-top: min(8.14vw, 32px);
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   gap: min(2.04vw, 8px) 0;
+  transition: max-height 0.35s ease, opacity 0.24s ease, margin-top 0.35s ease;
+}
+
+.planets_item[open] > .detail_list {
+  margin-top: min(8.14vw, 32px);
+  max-height: 28rem;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .detail_item {
@@ -303,7 +319,7 @@ var.zodiac {
 }
 .background_effects .bg_star:nth-of-type(10) {
   left: 73%;
-  top: 614%;
+  top: 64%;
   rotate: 125deg;
   transform: scale(0.8);
 }/*# sourceMappingURL=style.css.map */
