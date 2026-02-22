@@ -127,10 +127,13 @@ img.status_ico {
 }
 
 data.zodiac {
-  margin-left: $size_smallest;
   padding-left: $size_small;
   font-weight: bold;
   display: inline-block;
+
+  &::before {
+    padding-right: calc($size_smallest * 0.5);
+  }
 }
 
 .progress_status {

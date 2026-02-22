@@ -125,10 +125,12 @@ img.status_ico {
 }
 
 data.zodiac {
-  margin-left: min(2.04vw, 8px);
   padding-left: min(3.07vw, 12px);
   font-weight: bold;
   display: inline-block;
+}
+data.zodiac::before {
+  padding-right: calc(min(2.04vw, 8px) * 0.5);
 }
 
 .progress_status.prograde {
