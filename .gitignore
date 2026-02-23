@@ -11,6 +11,7 @@ node_modules/
 
 # Generated data
 public/data/
+packages/astro-status/package-lock.json
 public/tes_html
 
 # IDE / Tools
