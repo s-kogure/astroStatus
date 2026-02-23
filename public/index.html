@@ -22,6 +22,28 @@
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/png" href="./src/images/favicon.png">
   <link rel="apple-touch-icon" href="./src/images/pwa_android.png">
+
+  <!-- SEO tags -->
+  <link rel="canonical" href="https://astro-query.com/astro-status/" />
+  <meta name="keywords" content="西洋占星術,ボイドタイム,水星逆行,天体情報,天体イベント">
+  <meta name="description" content="西洋占星術向けのボイドタイムや天体スケジュールをかんたん確認できるツールです。">
+  <meta name="title" content="astroStatus 西洋占星術向けのボイドタイムや天体スケジュールをかんたん確認">
+
+  <!-- OG tags -->
+  <meta property="og:url" content="https://astro-query.com/astro-status/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="astroStatus" />
+  <meta property="og:description" content="西洋占星術向けのボイドタイムや天体スケジュールをかんたん確認。通知情報をONにしておくと、ボイドタイムや水星逆行が近いときに通知してくれます。" />
+  <meta property="og:site_name" content="astroStatus" />
+  <meta property="og:image" content="https://astro-query.com/astro-status/src/images/opp/ogp_full.png" />
+
+  <!-- OG Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="astroStatus">
+  <meta name="twitter:description" content="西洋占星術向けのボイドタイムや天体スケジュールをかんたん確認">
+  <meta name="twitter:image" content="https://astro-query.com/astro-status/src/images/opp/ogp_thmb.png">
+
+  <!-- END OG tags -->
   <meta name="theme-color" content="#001F43">
   <title>astro Status</title>
   <script type="module" src="./src/js/app.js"></script>
@@ -328,6 +350,30 @@
 
     </article>
   </main>
+
+  <aside id="usage" class="">
+    <div class="wrap">
+      <h2>How to use</h2>
+      <p>気になったときに見るだけでだいじょうぶです。むずかしいものはありません。<br>
+        通知情報をONにしておくと、ボイドタイムや水星逆行が近いときに通知してくれます。<br>
+        お使いのブラウザのメニューから「アプリをインストール」や「ホーム画面に追加」を選んでください。<br>
+        いつでも確認できて、天体イベントのお知らせも届いて一石二鳥です。
+      </p>
+      <h3>注意事項</h3>
+      <ul>
+        <li>ボイドタイムは3時間以上のものが、開始2時間前に通知されます。</li>
+        <li>ボイドタイム通知は、朝8時から24時までの配信で、夜間は通知されません。</li>
+        <li>水星逆行は、開始二週間前の12:00に配信されます。</li>
+        <li>水星逆行終了は、終了3日前の12:00に配信されます。</li>
+      </ul>
+      <h3>天体情報について</h3>
+      <ul>
+        <li>【OK】：天体情報にマイナスな状態がないときです。</li>
+        <li>【！】：天体に気になる状態がなにかしらある時です。</li>
+        <li>【!!】：天体に気になる状態が複数あるときです。</li>
+      </ul>
+    </div>
+  </aside>
 
   <footer>
     <p>&copy; 2026 jutta all rights reserved.</p>

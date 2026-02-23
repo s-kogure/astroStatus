@@ -124,13 +124,10 @@ img.status_ico {
   padding-left: 0.1rem;
 }
 
-data.zodiac {
-  padding-left: min(3.07vw, 12px);
+var.zodiac {
+  margin-left: min(2.04vw, 8px);
   font-weight: bold;
   display: inline-block;
-}
-data.zodiac::before {
-  padding-right: calc(min(2.04vw, 8px) * 0.5);
 }
 
 .progress_status.prograde {
@@ -170,45 +167,29 @@ data.zodiac::before {
   border: 1px solid var(--color-notice2);
 }
 .dignity_label.none {
-  display: none !important;
+  display: none;
 }
 
 .toggle_btn {
   margin-left: auto;
   display: inline-block;
-  transition: transform 0.28s ease;
-  transform-origin: center center;
 }
 
-.summary_list {
-  cursor: pointer;
-}
-.summary_list::-webkit-details-marker {
+.moon_status > .summary_list::-webkit-details-marker {
   display: none;
 }
 
-.planets_item[open] .toggle_btn {
-  transform: rotate(180deg);
+.moon_status > .summary_list[open] + .detail_list,
+.moon_status > .summary_list:not[open] + .detail_list {
+  display: block;
 }
 
 /*-------- PLANET STATUS ----------*/
 .detail_list {
-  margin-top: 0;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  pointer-events: none;
+  margin-top: min(8.14vw, 32px);
   display: flex;
   flex-direction: column;
   gap: min(2.04vw, 8px) 0;
-  transition: max-height 0.35s ease, opacity 0.24s ease, margin-top 0.35s ease;
-}
-
-.planets_item[open] > .detail_list {
-  margin-top: min(8.14vw, 32px);
-  max-height: 28rem;
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .detail_item {
@@ -230,12 +211,6 @@ data.zodiac::before {
   justify-content: flex-start;
 }
 
-@media screen and (min-width: 768px) {
-  h3.planet_info {
-    display: inline-block;
-    min-width: 7.5rem;
-  }
-}
 @media screen and (min-width: 1024px) {
   .planets_data__container {
     max-width: 768px;
@@ -246,7 +221,7 @@ data.zodiac::before {
     align-self: center;
   }
   .planets_item {
-    transition: background-color 0.3s ease;
+    transition: 0.5 ease;
   }
   .planets_item:hover {
     background-color: #eee;
@@ -328,17 +303,7 @@ data.zodiac::before {
 }
 .background_effects .bg_star:nth-of-type(10) {
   left: 73%;
-  top: 64%;
+  top: 614%;
   rotate: 125deg;
   transform: scale(0.8);
-}
-
-/*--------- FOOTER ---------------*/
-footer {
-  background-color: #001F43;
-  color: var(--white);
-  font-size: 0.75rem;
-  text-align: center;
-  line-height: 30px;
-  height: 30px;
 }/*# sourceMappingURL=style.css.map */
