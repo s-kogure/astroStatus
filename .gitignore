@@ -2,12 +2,14 @@ specification.md
 issues/
 task_report/
 horary-app_data/
+materrials/
 
 # Dependencies
 node_modules/
 
 # Generated data
 public/data/
+public/tes_html
 
 # IDE / Tools
 .claude/
