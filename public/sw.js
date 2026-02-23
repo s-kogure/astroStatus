@@ -79,8 +79,8 @@ self.addEventListener('push', (event) => {
   const data = event.data.json();
   const options = {
     body: data.body || '',
-    icon: './src/images/icons/app-icon-192.png',
-    badge: './src/images/icons/app-icon-192.png',
+    icon: './src/images/pwa_android.png',
+    badge: './src/images/pwa_android.png',
     tag: data.tag || 'astrostatus',
     data: { url: data.url || './' },
   };

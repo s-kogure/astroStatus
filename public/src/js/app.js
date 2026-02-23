@@ -52,7 +52,7 @@ const DIGNITY_MAP = {
     双子座: 'domicile',
     乙女座: 'domicile',
     射手座: 'detriment',
-    魚座: 'fall', // fall優先（detrimentでもあるが、fallの方が強い弱化）
+    魚座: 'detriment', // detrimentとfallの両方だが、detriment優先
   },
   金星: {
     牡牛座: 'domicile',
@@ -203,11 +203,24 @@ function findNextEventByType(events, type, fromMs) {
 
 function pickStatus(planet, events, nowMs) {
   if (!planet) return 'notice';
-  if (planet.retrograde) return 'caution';
+
+  // 負のファクターをカウント
+  let negatives = 0;
+  if (planet.retrograde) negatives++;
+  const dignity = getDignity(planet.name, planet.sign);
+  if (dignity === 'detriment' || dignity === 'fall') negatives++;
+
+  if (negatives >= 2) return 'caution';  // 赤: 二重苦
+  if (negatives >= 1) return 'notice';   // 黄: 逆行 or 悪いディグニティ
+
+  // 7日以内にイベントあり → 黄
   const nearest = findNext(events, () => true, nowMs);
-  if (!nearest) return 'ok';
-  const diffHours = ((getUtcMs(nearest.utc) || nowMs) - nowMs) / (1000 * 60 * 60);
-  return diffHours <= 24 * 7 ? 'notice' : 'ok';
+  if (nearest) {
+    const diffHours = ((getUtcMs(nearest.utc) || nowMs) - nowMs) / (1000 * 60 * 60);
+    if (diffHours <= 24 * 7) return 'notice';
+  }
+
+  return 'ok';
 }
 
 function updateDignityLabel(card, jpPlanetName, sign) {
