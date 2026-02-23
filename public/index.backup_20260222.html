@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>astroStatus</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      background: #0a0e17;
+      color: #c8cdd5;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #e2e8f0;
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+    .generated-at {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+    h2 {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 4px;
+      margin: 24px 0 12px;
+    }
+
+    /* 天体リスト */
+    .planet-list { list-style: none; }
+    .planet-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid #1e293b;
+      font-size: 0.9rem;
+    }
+    .planet-name { color: #e2e8f0; min-width: 60px; }
+    .planet-sign { color: #7dd3fc; }
+    .planet-degree { color: #64748b; font-size: 0.8rem; }
+    .planet-retro {
+      color: #fb923c;
+      font-weight: bold;
+      font-size: 0.75rem;
+    }
+
+    /* ボイド */
+    .void-status {
+      padding: 12px;
+      border-radius: 6px;
+      margin: 8px 0;
+      font-size: 0.9rem;
+    }
+    .void-active {
+      background: #2d1b0e;
+      border: 1px solid #92400e;
+      color: #fbbf24;
+    }
+    .void-inactive {
+      background: #0c1a0e;
+      border: 1px solid #14532d;
+      color: #4ade80;
+    }
+    .void-upcoming {
+      padding: 6px 0;
+      border-bottom: 1px solid #1e293b;
+      font-size: 0.85rem;
+    }
+
+    /* スケジュール */
+    .event-item {
+      padding: 6px 0;
+      border-bottom: 1px solid #1e293b;
+      font-size: 0.85rem;
+    }
+    .event-date { color: #64748b; font-size: 0.8rem; }
+    .event-label { color: #e2e8f0; }
+    .eclipse-badge {
+      background: #7f1d1d;
+      color: #fca5a5;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    .station-retro { color: #fb923c; }
+    .station-direct { color: #4ade80; }
+    .ingress-label { color: #7dd3fc; }
+
+    .loading { color: #64748b; font-style: italic; }
+    .error { color: #f87171; }
+  </style>
+</head>
+<body>
+  <h1>astroStatus</h1>
+  <div class="generated-at" id="generatedAt">読み込み中...</div>
+
+  <h2>Planets</h2>
+  <ul class="planet-list" id="planetList">
+    <li class="loading">読み込み中...</li>
+  </ul>
+
+  <h2>Void of Course</h2>
+  <div id="voidStatus" class="loading">読み込み中...</div>
+
+  <h2>Upcoming Void Periods</h2>
+  <div id="upcomingVoids" class="loading">読み込み中...</div>
+
+  <h2>Lunar Phases</h2>
+  <div id="lunarPhases" class="loading">読み込み中...</div>
+
+  <h2>Planet Events</h2>
+  <div id="planetEvents" class="loading">読み込み中...</div>
+
+  <script>
+    const TZ_OFFSET = 9; // JST
+    const TZ_OFFSET_MS = TZ_OFFSET * 60 * 60 * 1000;
+
+    function getJstDate(utcStr) {
+      if (!utcStr) return null;
+      const utcMs = Date.parse(utcStr);
+      if (Number.isNaN(utcMs)) return null;
+      return new Date(utcMs + TZ_OFFSET_MS);
+    }
+
+    function toJst(utcStr) {
+      const d = getJstDate(utcStr);
+      if (!d) return '-';
+      const m = String(d.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(d.getUTCDate()).padStart(2, '0');
+      const h = String(d.getUTCHours()).padStart(2, '0');
+      const min = String(d.getUTCMinutes()).padStart(2, '0');
+      return `${m}/${day} ${h}:${min}`;
+    }
+
+    function toJstDate(utcStr) {
+      const d = getJstDate(utcStr);
+      if (!d) return '-';
+      const m = String(d.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(d.getUTCDate()).padStart(2, '0');
+      const h = String(d.getUTCHours()).padStart(2, '0');
+      const min = String(d.getUTCMinutes()).padStart(2, '0');
+      return `${d.getUTCFullYear()}/${m}/${day} ${h}:${min} JST`;
+    }
+
+    async function loadData() {
+      try {
+        const [currentRes, scheduleRes] = await Promise.all([
+          fetch('data/current.json'),
+          fetch('data/schedule.json'),
+        ]);
+        if (!currentRes.ok || !scheduleRes.ok) {
+          throw new Error(`HTTP error: current=${currentRes.status}, schedule=${scheduleRes.status}`);
+        }
+        const current = await currentRes.json();
+        const schedule = await scheduleRes.json();
+
+        renderCurrent(current);
+        renderSchedule(schedule);
+      } catch (err) {
+        document.getElementById('generatedAt').textContent = 'データの読み込みに失敗しました';
+        document.getElementById('generatedAt').classList.add('error');
+        console.error(err);
+      }
+    }
+
+    function renderCurrent(data) {
+      // 生成時刻
+      document.getElementById('generatedAt').textContent =
+        `Last updated: ${toJstDate(data.generatedAt)}`;
+
+      // 天体リスト
+      const list = document.getElementById('planetList');
+      list.innerHTML = data.planets.map(p => {
+        const retro = p.retrograde ? '<span class="planet-retro">Rx</span>' : '';
+        return `<li class="planet-item">
+          <span class="planet-name">${p.name}</span>
+          <span class="planet-sign">${p.sign}</span>
+          <span class="planet-degree">${p.degreeInSign.toFixed(2)}°</span>
+          ${retro}
+        </li>`;
+      }).join('');
+
+      // ボイドステータス
+      const voidEl = document.getElementById('voidStatus');
+      if (data.void.isVoid) {
+        voidEl.className = 'void-status void-active';
+        voidEl.innerHTML = `VOID — ${data.void.moonSign}<br>
+          <span style="font-size:0.8rem">終了: ${toJst(data.void.endsAt)}</span>`;
+      } else {
+        voidEl.className = 'void-status void-inactive';
+        voidEl.textContent = `NO VOID — 月: ${data.void.moonSign}`;
+      }
+
+      // 直近ボイド
+      const voidsEl = document.getElementById('upcomingVoids');
+      if (data.upcomingVoids.length === 0) {
+        voidsEl.textContent = '直近48時間のボイドなし';
+      } else {
+        voidsEl.innerHTML = data.upcomingVoids.map(v =>
+          `<div class="void-upcoming">
+            ${v.startedBeforeRangeStart ? '<span style="color:#fbbf24">継続中</span> ' : ''}
+            ${toJst(v.startUtc)} - ${toJst(v.endUtc)}
+            <span style="color:#64748b">(${v.durationHours}h)</span>
+            ${v.moonSign}
+          </div>`
+        ).join('');
+      }
+    }
+
+    function renderSchedule(data) {
+      // 月相
+      const phasesEl = document.getElementById('lunarPhases');
+      phasesEl.innerHTML = data.lunarPhases.map(p => {
+        const eclipseBadge = p.eclipse
+          ? ` <span class="eclipse-badge">${p.eclipse.label}</span>`
+          : '';
+        return `<div class="event-item">
+          <span class="event-date">${toJst(p.utc)}</span>
+          <span class="event-label">${p.label}</span>
+          ${p.moonSign}${eclipseBadge}
+        </div>`;
+      }).join('');
+
+      // 天体イベント
+      const eventsEl = document.getElementById('planetEvents');
+      eventsEl.innerHTML = data.planetEvents.map(e => {
+        let label = '';
+        if (e.type === 'station_retrograde') {
+          label = `<span class="station-retro">${e.planet} 逆行開始</span> ${e.sign} ${e.degreeInSign}°`;
+        } else if (e.type === 'station_direct') {
+          label = `<span class="station-direct">${e.planet} 順行復帰</span> ${e.sign} ${e.degreeInSign}°`;
+        } else if (e.type === 'ingress') {
+          const retro = e.retrograde ? ' (Rx)' : '';
+          label = `<span class="ingress-label">${e.planet}</span> ${e.fromSign} → ${e.toSign}${retro}`;
+        }
+        return `<div class="event-item">
+          <span class="event-date">${toJst(e.utc)}</span>
+          ${label}
+        </div>`;
+      }).join('');
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

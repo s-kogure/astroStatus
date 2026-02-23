@@ -1,0 +1,385 @@
+// 定義変数
+
+$size_smallest: min(2.04vw,8px);
+$size_small: min(3.07vw,12px);
+$size_medium: min(4.07vw,16px);
+$size_large: min(8.14vw,32px);
+$size_largest: min(16.3vw,64px);
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+    background: var(--white);
+    margin: 0;
+    padding: 0;
+    color: var(--primary);
+    position: relative;
+}
+
+header,main,footer {
+  width: 100%;
+}
+
+main {
+  padding: 4rem 1rem 2rem;
+  // background-color: var(--white);
+}
+
+var {
+  font-style: normal!important;
+}
+/*-------- HEADER ----------*/
+
+header {
+  padding-top: $size_largest;
+  position: relative;
+  display: block;
+
+    &::before {
+    content: '';
+    position: absolute;
+    top:0;
+    display: block;
+    width: 100%;
+    height: clamp( 24vh,35vh,15rem);
+    overflow: visible;
+    background-color: #001F43;
+    z-index: -1;
+  }
+}
+
+
+.header_lead {
+    display: block;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    color: var(--primary);
+    background: var(--white);
+    margin: auto;
+    width: min( 77.3vw , 32rem);
+    padding: $size_medium;
+    position: relative;
+}
+
+.logo_title {
+    font-size: calc( $size_large * 1.25 );
+    text-align: center;
+}
+
+
+/*-------- MAIN CONTAINER ----------*/
+
+.planets_data__container {
+  padding-top: $size_large;
+}
+
+
+/*-------- PLANET ITEMS ----------*/
+
+.planets_item {
+  display: block;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  margin-top: $size_medium;
+  padding: $size_medium;
+  background-color: var(--white);
+}
+
+
+.summary_list {
+  display: flex;
+  width: 100%;
+  height: $size_medium;
+  vertical-align: baseline;
+
+  > * {
+    display: inline-block !important;
+    vertical-align: baseline;
+    line-height: 1;
+    font-size: calc( $size_medium * 0.9 );
+  }
+}
+
+
+img.status_ico {
+  display: inline-block;
+  height: $size_medium;
+  vertical-align: middle;
+  margin-bottom: calc( $size_smallest * .5);
+}
+
+.planets {
+  padding-left: $size_smallest;
+  font-weight: bold!important;
+
+  &::before {
+    padding-right: calc( $size_smallest * 0.5 );
+  }
+
+  &::after {
+    content: ":";
+    display: inline-block;
+    padding-left: 0.1rem;
+  }
+}
+
+var.zodiac {
+  margin-left: $size_smallest;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.progress_status {
+
+  &.prograde {
+    display: none !important;
+  }
+
+  &.retrograde {
+    padding-left: $size_smallest;
+    font-weight: bold;
+    line-height: 1;
+    align-self: flex-end;
+  }
+}
+
+.dignity_label {
+  margin-left: $size_small;
+  font-size: $size_small;
+  font-weight: bold;
+  padding: 0 8px ;
+  height: min(5vw,20px);
+  min-width: min(14.5vw,6rem);
+  border-radius: 4px;
+  text-align: center;
+  line-height: 1.6;
+  align-self: center;
+  margin-bottom: calc( $size_smallest * 0.2 );
+  background-color: var(--white);
+
+    &.domicile {
+      border: 1px solid rgba(0,137,50,1);
+    }
+
+    &.exaltation {
+      border: 1px solid var(--color-normally);
+    }
+
+    &.fall {
+      border: 1px solid rgba(161,106,0,1);
+    }
+
+    &.detriment {
+      border: 1px solid var(--color-notice2);
+    }
+
+    &.none {
+      display: none;
+    }
+}
+
+.toggle_btn {
+  margin-left: auto;
+  display: inline-block;
+}
+
+.moon_status > .summary_list {
+    // pointer-events: none; /* マウスイベントを無効化 */
+    // cursor: default;     /* ポインターを矢印に戻す */
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+    
+}
+
+.summary_list[open] + .detail_list {
+  // animation soon
+}
+
+.moon_status > .summary_list[open] + .detail_list ,
+.moon_status > .summary_list:not[open] + .detail_list {
+  display: block;
+}
+
+
+
+
+
+/*-------- PLANET STATUS ----------*/
+
+.detail_list {
+  margin-top: $size_large;
+  display: flex;
+  flex-direction: column;
+  gap: $size_smallest 0;
+}
+
+
+.detail_item {
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: calc( $size_medium * 0.8 );
+
+  * {
+    font-size: $size_medium;
+  }
+
+  h4 {
+    &::after {
+      content:":";
+      padding-right: calc( $size_smallest );
+
+    }
+  }
+}
+
+.status {
+
+  .summary_list {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+
+
+  .planets_data__container {
+        max-width: 768px;
+        margin: auto;
+        padding-top: $size_largest;
+      }
+
+  .progress_status {
+
+    &.retrograde {
+      align-self: center;
+    }
+  }
+
+  .planets_item {
+    transition: 0.5 ease;
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+
+}
+
+/*--------- Background Effects ---------------*/
+
+
+.background_effects {
+  position: absolute;
+  top: 0;
+      display: block;
+    width: 100%;
+  height: clamp( 24vh,35vh,15rem);
+  // background-color: midnightblue;
+  z-index: -1;
+  display: block;
+  overflow: hidden;
+
+
+    // content: '';
+    // position: absolute;
+    // top:0;
+
+    // height: clamp( 24vh,35vh,15rem);
+    // overflow: visible;
+    // background-color: #001F43;
+    // z-index: -1;
+
+  .bg_moon {
+    position: relative;
+    color: #fff;
+    display: block;
+    // width: min( 20vw, 10rem );
+      // width: clamp( 20vh,18vh,8rem);
+      width: min( 40vw,200px);
+    left: 5%;
+    top: clamp(12.5%, 2rem, 200px);
+    // top: 40%;
+  }
+
+  .bg_star{
+
+    position: absolute;
+    display: block;
+    color: #fff;
+    width: min(1rem,24px);
+    width: 20px;
+    height: auto;
+  }
+
+
+  .bg_star:nth-of-type(2) {
+        left: 87%;
+        top: 14%;
+        rotate: 3deg;
+        transform: scale(0.5);
+      }
+
+  .bg_star:nth-of-type(3) {
+        left: 95%;
+        top: 52%;
+        rotate: 45deg;
+        transform: scale(0.7);
+      }
+
+  .bg_star:nth-of-type(4) {
+        left: 75%;
+        top: 75%;
+        rotate: 210deg;
+        transform: scale(0.8);
+      }
+
+  .bg_star:nth-of-type(5) {
+        left: 32%;
+        top: 85%;
+        rotate: 120deg;
+        transform: scale(0.7);
+      }
+
+  .bg_star:nth-of-type(6) {
+        left: 84%;
+        top: 25%;
+        transform: scale(0.3);
+      }
+
+  .bg_star:nth-of-type(7) {
+        left: 3%;
+        top: 13%;
+        rotate: 50deg;
+        transform: scale(0.6);
+      }
+
+  .bg_star:nth-of-type(8) {
+        left: 65%;
+        top: 61%;
+        rotate: 175deg;
+        transform: scale(0.8);
+      }
+
+  .bg_star:nth-of-type(9) {
+        left: 29%;
+        top: 8%;
+        rotate: 130deg;
+        transform: scale(0.9);
+      }
+
+  .bg_star:nth-of-type(10) {
+        left: 73%;
+        top: 614%;
+        rotate: 125deg;
+        transform: scale(0.8);
+      }
+
+}

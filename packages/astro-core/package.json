@@ -1,0 +1,14 @@
+{
+  "name": "@astroquery/astro-core",
+  "version": "0.1.0",
+  "description": "ホラリー占星術向け天文計算コア（切り出し中）",
+  "private": true,
+  "type": "commonjs",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=20.11.1"
+  },
+  "dependencies": {
+    "swisseph": "0.5.17"
+  }
+}

@@ -1,1 +1,1 @@
-# astroStatus
+# astroStatusについて
