@@ -94,6 +94,11 @@ header {
   width: 100%;
   height: $size_medium;
   vertical-align: baseline;
+  cursor: pointer;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
 
   > * {
     display: inline-block !important;
@@ -102,7 +107,6 @@ header {
     font-size: calc( $size_medium * 0.9 );
   }
 }
-
 
 img.status_ico {
   display: inline-block;
@@ -126,10 +130,14 @@ img.status_ico {
   }
 }
 
-var.zodiac {
-  margin-left: $size_smallest;
+data.zodiac {
+  padding-left: $size_small;
   font-weight: bold;
   display: inline-block;
+
+  &::before {
+    padding-right: calc( $size_smallest * 0.5 );
+  }
 }
 
 .progress_status {
@@ -150,9 +158,9 @@ var.zodiac {
   margin-left: $size_small;
   font-size: $size_small;
   font-weight: bold;
-  padding: 0 8px ;
-  height: min(5vw,20px);
-  min-width: min(14.5vw,6rem);
+  padding: 0 8px;
+  height: min(5vw, 20px);
+  min-width: min(14.5vw, 6rem);
   border-radius: 4px;
   text-align: center;
   line-height: 1.6;
@@ -177,47 +185,43 @@ var.zodiac {
     }
 
     &.none {
-      display: none;
+      display: none !important;
     }
 }
 
 .toggle_btn {
   margin-left: auto;
   display: inline-block;
+  transition: transform 0.28s ease;
+  transform-origin: center center;
 }
 
-.moon_status > .summary_list {
-    // pointer-events: none; /* マウスイベントを無効化 */
-    // cursor: default;     /* ポインターを矢印に戻す */
-
-    &::-webkit-details-marker {
-      display: none;
-    }
-    
+.planets_item[open] .toggle_btn {
+  transform: rotate(180deg);
 }
 
-.summary_list[open] + .detail_list {
-  // animation soon
-}
-
-.moon_status > .summary_list[open] + .detail_list ,
-.moon_status > .summary_list:not[open] + .detail_list {
-  display: block;
-}
-
-
-
-
-
-/*-------- PLANET STATUS ----------*/
-
+// 詳細エリアの開閉（アニメーション付き）
 .detail_list {
-  margin-top: $size_large;
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   gap: $size_smallest 0;
+  transition: max-height 0.35s ease, opacity 0.24s ease, margin-top 0.35s ease;
 }
 
+.planets_item[open] > .detail_list {
+  margin-top: $size_large;
+  max-height: 28rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/*-------- PLANET STATUS ----------*/
 
 .detail_item {
   display: flex;
@@ -228,12 +232,9 @@ var.zodiac {
     font-size: $size_medium;
   }
 
-  h4 {
-    &::after {
-      content:":";
-      padding-right: calc( $size_smallest );
-
-    }
+  h4::after {
+    content: ":";
+    padding-right: $size_smallest;
   }
 }
 
@@ -247,24 +248,29 @@ var.zodiac {
 }
 
 
+@media screen and (min-width: 768px) {
+  h3.planet_info {
+    display: inline-block;
+    min-width: 7.5rem;
+  }
+}
+
 @media screen and (min-width: 1024px) {
 
-
   .planets_data__container {
-        max-width: 768px;
-        margin: auto;
-        padding-top: $size_largest;
-      }
+    max-width: 768px;
+    margin: auto;
+    padding-top: $size_largest;
+  }
 
   .progress_status {
-
     &.retrograde {
       align-self: center;
     }
   }
 
   .planets_item {
-    transition: 0.5 ease;
+    transition: background-color 0.3s ease;
 
     &:hover {
       background-color: #eee;
@@ -377,9 +383,20 @@ var.zodiac {
 
   .bg_star:nth-of-type(10) {
         left: 73%;
-        top: 614%;
+        top: 64%;
         rotate: 125deg;
         transform: scale(0.8);
       }
 
+}
+
+/*--------- FOOTER ---------------*/
+
+footer {
+  background-color: #001F43;
+  color: var(--white);
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 30px;
+  height: 30px;
 }
