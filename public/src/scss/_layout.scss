@@ -112,6 +112,14 @@ header {
     line-height: 1;
     font-size: calc( $size_medium * 0.9 );
   }
+
+  .planet_info {
+    width: calc( $size_largest * 1.9 );
+    flex-basis: 30.3vw;
+    position: relative;
+    // width: 32vw;
+  }
+
 }
 
 img.status_ico {
@@ -129,6 +137,7 @@ img.status_ico {
     padding-right: calc( $size_smallest * 0.5 );
   }
 
+
   &::after {
     content: ":";
     display: inline-block;
@@ -137,12 +146,16 @@ img.status_ico {
 }
 
 data.zodiac {
-  padding-left: $size_small;
+  padding-left: 1vw;
   font-weight: bold;
   display: inline-block;
+  min-width: calc( $size_largest * 1.2 );
 
   &::before {
     padding-right: calc( $size_smallest * 0.5 );
+    width: 1.2rem;
+    // font-size: 3.6vw;
+    font-variation-settings: 'width' 16;
   }
 }
 
@@ -153,7 +166,9 @@ data.zodiac {
   }
 
   &.retrograde {
-    padding-left: $size_smallest;
+    box-sizing: content-box;
+    width: $size_medium;
+    padding-left: 0.25vw;
     font-weight: bold;
     line-height: 1;
     align-self: flex-end;
@@ -161,18 +176,20 @@ data.zodiac {
 }
 
 .dignity_label {
-  margin-left: $size_small;
-  font-size: $size_small;
-  font-weight: bold;
-  padding: 0 8px;
-  height: min(5vw, 20px);
-  min-width: min(14.5vw, 6rem);
-  border-radius: 4px;
-  text-align: center;
-  line-height: 1.6;
-  align-self: center;
-  margin-bottom: calc( $size_smallest * 0.2 );
-  background-color: var(--white);
+    font-size: $size_small;
+    font-weight: bold;
+    padding: 0 8px;
+    height: min(5vw, 20px);
+    min-width: min(14.5vw, 6rem);
+    border-radius: 4px;
+    text-align: center;
+    line-height: 1.6;
+    align-self: center;
+    margin-bottom: calc( $size_smallest * 0.2 );
+    // margin-right: 1vw;
+    // margin-left: auto;
+    background-color: var(--white);
+    width: calc( $size_largest * 1.25 );
 
     &.domicile {
       border: 1px solid rgba(0,137,50,1);
@@ -195,12 +212,22 @@ data.zodiac {
     }
 }
 
+.progress_status.retrograde + .dignity_label {
+  margin-left: 2vw;
+}
+
+.progress_status.prograde + .dignity_label {
+  margin-left: calc( $size_medium + 2vw );
+}
+
 .toggle_btn {
   margin-left: auto;
   display: inline-block;
   transition: transform 0.28s ease;
   transform-origin: center center;
 }
+
+.toggle_btn 
 
 .planets_item[open] .toggle_btn {
   transform: rotate(180deg);
@@ -251,8 +278,8 @@ data.zodiac {
     flex-wrap: nowrap;
     justify-content: flex-start;
   }
-}
 
+}
 
 @media screen and (min-width: 768px) {
   h3.planet_info {

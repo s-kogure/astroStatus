@@ -113,6 +113,11 @@ header::before {
   line-height: 1;
   font-size: calc(min(4.07vw, 16px) * 0.9);
 }
+.summary_list .planet_info {
+  width: calc(min(16.3vw, 64px) * 1.9);
+  flex-basis: 30.3vw;
+  position: relative;
+}
 
 img.status_ico {
   display: inline-block;
@@ -135,26 +140,30 @@ img.status_ico {
 }
 
 data.zodiac {
-  padding-left: min(3.07vw, 12px);
+  padding-left: 1vw;
   font-weight: bold;
   display: inline-block;
+  min-width: calc(min(16.3vw, 64px) * 1.2);
 }
 data.zodiac::before {
   padding-right: calc(min(2.04vw, 8px) * 0.5);
+  width: 1.2rem;
+  font-variation-settings: "width" 16;
 }
 
 .progress_status.prograde {
   display: none !important;
 }
 .progress_status.retrograde {
-  padding-left: min(2.04vw, 8px);
+  box-sizing: content-box;
+  width: min(4.07vw, 16px);
+  padding-left: 0.25vw;
   font-weight: bold;
   line-height: 1;
   align-self: flex-end;
 }
 
 .dignity_label {
-  margin-left: min(3.07vw, 12px);
   font-size: min(3.07vw, 12px);
   font-weight: bold;
   padding: 0 8px;
@@ -166,6 +175,7 @@ data.zodiac::before {
   align-self: center;
   margin-bottom: calc(min(2.04vw, 8px) * 0.2);
   background-color: var(--white);
+  width: calc(min(16.3vw, 64px) * 1.25);
 }
 .dignity_label.domicile {
   border: 1px solid rgb(0, 137, 50);
@@ -183,6 +193,14 @@ data.zodiac::before {
   display: none !important;
 }
 
+.progress_status.retrograde + .dignity_label {
+  margin-left: 2vw;
+}
+
+.progress_status.prograde + .dignity_label {
+  margin-left: calc(min(4.07vw, 16px) + 2vw);
+}
+
 .toggle_btn {
   margin-left: auto;
   display: inline-block;
@@ -190,7 +208,7 @@ data.zodiac::before {
   transform-origin: center center;
 }
 
-.planets_item[open] .toggle_btn {
+.toggle_btn .planets_item[open] .toggle_btn {
   transform: rotate(180deg);
 }
 
