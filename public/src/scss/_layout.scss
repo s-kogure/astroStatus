@@ -31,6 +31,12 @@ main {
 var {
   font-style: normal!important;
 }
+
+@media screen and (min-width:768px) {
+  .pc_none {
+    display: none;
+  }
+}
 /*-------- HEADER ----------*/
 
 header {
@@ -387,6 +393,62 @@ data.zodiac {
         rotate: 125deg;
         transform: scale(0.8);
       }
+
+}
+
+/*--------- USAGE ---------------*/
+
+
+.usage {
+          width: 100%;
+          max-width: 768px;
+          margin: auto;
+          padding: $size_medium;
+
+          .wrap {
+            border-top: 1px var(--primary) solid;
+            padding: $size_medium 0;
+          }
+
+          h2,h3 {
+            font-size: calc( $size_medium * 1.1);
+            margin-bottom: calc( $size_smallest *0.5);
+          }
+
+          .usage_tips {
+            margin-left: 1rem;
+          }
+
+          p,.usage_tips {
+            margin-bottom: $size_medium;
+          }
+
+          p,li {
+            font-size: $size_medium;
+            line-height: 1.6;
+          }
+
+          .usage_tips li::marker {
+            content: "・";
+            display: inline-block;
+          }
+}
+
+@media screen and (min-width:768px) {
+    
+  .usage {
+            margin-top: $size_medium;
+            padding: $size_large 0 $size_medium;
+
+            .wrap {
+              padding: $size_medium 0;
+            }
+
+            p,li {
+            font-size: calc( $size_medium * 0.9 );
+            line-height: 1.6;
+          }
+  }
 
 }
 
