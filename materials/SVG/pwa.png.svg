@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #001e43;
+      }
+
+      .cls-2 {
+        opacity: .13;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 6px;
+      }
+
+      .cls-4 {
+        font-family: JosefinSansRoman-SemiBold, 'Josefin Sans';
+        font-size: 451.08px;
+        font-variation-settings: 'wght' 600;
+        font-weight: 600;
+      }
+
+      .cls-4, .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-6 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <circle class="cls-1" cx="256" cy="256" r="256"/>
+    </clipPath>
+  </defs>
+  <g id="_レイヤー_1-2" data-name="レイヤー 1">
+    <g>
+      <circle class="cls-3" cx="256" cy="256" r="256"/>
+      <g class="cls-6">
+        <polyline class="cls-2" points="-9.85 196.61 43.74 352.06 78.88 279.64 118.15 371.87 179.58 241.07 211.72 358.48 435.2 358.48 521.85 133.06"/>
+        <path class="cls-5" d="M121.19,99.77l21.26,27.51,34.69-2.37c2.83-.19,4.63,2.96,3.04,5.3l-19.6,28.72,12.97,32.26c1.06,2.63-1.38,5.32-4.1,4.53l-33.37-9.76-26.67,22.31c-2.17,1.82-5.49.33-5.57-2.5l-1.03-34.75-29.46-18.47c-2.4-1.51-2.01-5.12.66-6.07l32.74-11.72,8.46-33.72c.69-2.75,4.25-3.49,5.98-1.25Z"/>
+        <text class="cls-4" transform="translate(111.01 418.84)"><tspan x="0" y="0">A</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
