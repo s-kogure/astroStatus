@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-02-21T03:22:45.937Z",
+  "generatedAt": "2026-02-23T13:43:35.492Z",
   "period": {
     "from": "2026-02-01",
-    "to": "2026-04-01"
+    "to": "2027-02-01"
   },
   "lunarPhases": [
     {
@@ -119,6 +119,335 @@
       "utc": "2026-03-30T16:00:48Z",
       "fromSign": "牡羊座",
       "toSign": "牡牛座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "火星",
+      "utc": "2026-04-09T19:36:07Z",
+      "fromSign": "魚座",
+      "toSign": "牡羊座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "水星",
+      "utc": "2026-04-15T03:21:26Z",
+      "fromSign": "魚座",
+      "toSign": "牡羊座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "金星",
+      "utc": "2026-04-24T04:03:21Z",
+      "fromSign": "牡牛座",
+      "toSign": "双子座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "天王星",
+      "utc": "2026-04-26T00:51:15Z",
+      "fromSign": "牡牛座",
+      "toSign": "双子座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "水星",
+      "utc": "2026-05-03T02:56:52Z",
+      "fromSign": "牡羊座",
+      "toSign": "牡牛座",
+      "retrograde": false
+    },
+    {
+      "type": "station_retrograde",
+      "planet": "冥王星",
+      "utc": "2026-05-06T15:34:15Z",
+      "sign": "水瓶座",
+      "degreeInSign": 5.51
+    },
+    {
+      "type": "ingress",
+      "planet": "水星",
+      "utc": "2026-05-17T10:26:20Z",
+      "fromSign": "牡牛座",
+      "toSign": "双子座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "火星",
+      "utc": "2026-05-18T22:25:25Z",
+      "fromSign": "牡羊座",
+      "toSign": "牡牛座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "金星",
+      "utc": "2026-05-19T01:05:13Z",
+      "fromSign": "双子座",
+      "toSign": "蟹座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "水星",
+      "utc": "2026-06-01T11:55:39Z",
+      "fromSign": "双子座",
+      "toSign": "蟹座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "金星",
+      "utc": "2026-06-13T10:46:44Z",
+      "fromSign": "蟹座",
+      "toSign": "獅子座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "火星",
+      "utc": "2026-06-28T19:29:10Z",
+      "fromSign": "牡牛座",
+      "toSign": "双子座",
+      "retrograde": false
+    },
+    {
+      "type": "station_retrograde",
+      "planet": "水星",
+      "utc": "2026-06-29T17:35:55Z",
+      "sign": "蟹座",
+      "degreeInSign": 26.26
+    },
+    {
+      "type": "ingress",
+      "planet": "木星",
+      "utc": "2026-06-30T05:52:09Z",
+      "fromSign": "蟹座",
+      "toSign": "獅子座",
+      "retrograde": false
+    },
+    {
+      "type": "station_retrograde",
+      "planet": "海王星",
+      "utc": "2026-07-07T10:54:35Z",
+      "sign": "牡羊座",
+      "degreeInSign": 4.42
+    },
+    {
+      "type": "ingress",
+      "planet": "金星",
+      "utc": "2026-07-09T17:22:03Z",
+      "fromSign": "獅子座",
+      "toSign": "乙女座",
+      "retrograde": false
+    },
+    {
+      "type": "station_direct",
+      "planet": "水星",
+      "utc": "2026-07-23T22:57:51Z",
+      "sign": "蟹座",
+      "degreeInSign": 16.32
+    },
+    {
+      "type": "station_retrograde",
+      "planet": "土星",
+      "utc": "2026-07-26T19:56:44Z",
+      "sign": "牡羊座",
+      "degreeInSign": 14.75
+    },
+    {
+      "type": "ingress",
+      "planet": "金星",
+      "utc": "2026-08-06T19:12:41Z",
+      "fromSign": "乙女座",
+      "toSign": "天秤座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "水星",
+      "utc": "2026-08-09T16:28:19Z",
+      "fromSign": "蟹座",
+      "toSign": "獅子座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "火星",
+      "utc": "2026-08-11T08:30:26Z",
+      "fromSign": "双子座",
+      "toSign": "蟹座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "水星",
+      "utc": "2026-08-25T11:04:10Z",
+      "fromSign": "獅子座",
+      "toSign": "乙女座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "金星",
+      "utc": "2026-09-10T08:06:44Z",
+      "fromSign": "天秤座",
+      "toSign": "蠍座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "水星",
+      "utc": "2026-09-10T16:20:34Z",
+      "fromSign": "乙女座",
+      "toSign": "天秤座",
+      "retrograde": false
+    },
+    {
+      "type": "station_retrograde",
+      "planet": "天王星",
+      "utc": "2026-09-10T18:27:16Z",
+      "sign": "双子座",
+      "degreeInSign": 5.7
+    },
+    {
+      "type": "ingress",
+      "planet": "火星",
+      "utc": "2026-09-28T02:48:48Z",
+      "fromSign": "蟹座",
+      "toSign": "獅子座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "水星",
+      "utc": "2026-09-30T11:44:20Z",
+      "fromSign": "天秤座",
+      "toSign": "蠍座",
+      "retrograde": false
+    },
+    {
+      "type": "station_retrograde",
+      "planet": "金星",
+      "utc": "2026-10-03T07:15:47Z",
+      "sign": "蠍座",
+      "degreeInSign": 8.49
+    },
+    {
+      "type": "station_direct",
+      "planet": "冥王星",
+      "utc": "2026-10-16T02:40:13Z",
+      "sign": "水瓶座",
+      "degreeInSign": 3.07
+    },
+    {
+      "type": "station_retrograde",
+      "planet": "水星",
+      "utc": "2026-10-24T07:12:44Z",
+      "sign": "蠍座",
+      "degreeInSign": 20.98
+    },
+    {
+      "type": "ingress",
+      "planet": "金星",
+      "utc": "2026-10-25T09:09:44Z",
+      "fromSign": "蠍座",
+      "toSign": "天秤座",
+      "retrograde": true
+    },
+    {
+      "type": "station_direct",
+      "planet": "水星",
+      "utc": "2026-11-13T15:53:53Z",
+      "sign": "蠍座",
+      "degreeInSign": 5.03
+    },
+    {
+      "type": "station_direct",
+      "planet": "金星",
+      "utc": "2026-11-14T00:27:26Z",
+      "sign": "天秤座",
+      "degreeInSign": 22.86
+    },
+    {
+      "type": "ingress",
+      "planet": "火星",
+      "utc": "2026-11-25T23:37:00Z",
+      "fromSign": "獅子座",
+      "toSign": "乙女座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "金星",
+      "utc": "2026-12-04T08:12:39Z",
+      "fromSign": "天秤座",
+      "toSign": "蠍座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "水星",
+      "utc": "2026-12-06T08:33:16Z",
+      "fromSign": "蠍座",
+      "toSign": "射手座",
+      "retrograde": false
+    },
+    {
+      "type": "station_direct",
+      "planet": "土星",
+      "utc": "2026-12-10T23:30:58Z",
+      "sign": "牡羊座",
+      "degreeInSign": 7.93
+    },
+    {
+      "type": "station_direct",
+      "planet": "海王星",
+      "utc": "2026-12-12T22:17:18Z",
+      "sign": "牡羊座",
+      "degreeInSign": 1.61
+    },
+    {
+      "type": "station_retrograde",
+      "planet": "木星",
+      "utc": "2026-12-13T00:56:32Z",
+      "sign": "獅子座",
+      "degreeInSign": 27.02
+    },
+    {
+      "type": "ingress",
+      "planet": "水星",
+      "utc": "2026-12-25T18:22:25Z",
+      "fromSign": "射手座",
+      "toSign": "山羊座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "金星",
+      "utc": "2027-01-07T08:53:24Z",
+      "fromSign": "蠍座",
+      "toSign": "射手座",
+      "retrograde": false
+    },
+    {
+      "type": "station_retrograde",
+      "planet": "火星",
+      "utc": "2027-01-10T12:59:23Z",
+      "sign": "乙女座",
+      "degreeInSign": 10.43
+    },
+    {
+      "type": "ingress",
+      "planet": "水星",
+      "utc": "2027-01-13T06:05:47Z",
+      "fromSign": "山羊座",
+      "toSign": "水瓶座",
       "retrograde": false
     }
   ]
