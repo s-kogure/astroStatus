@@ -1,4 +1,5 @@
 import { initLuckyEffects } from './ui_affects.js';
+import { initPushSubscription } from './push-subscribe.js';
 
 const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
 const WEEK_JA = ['日', '月', '火', '水', '木', '金', '土'];
@@ -460,6 +461,15 @@ async function loadData() {
     }
     console.error(error);
   }
+}
+
+// ── Service Worker 登録 & push通知購読 ──
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js')
+    .then(() => initPushSubscription())
+    .catch((err) => {
+      console.warn('SW registration failed:', err);
+    });
 }
 
 initLuckyEffects();

@@ -2,6 +2,16 @@
 <html lang="ja">
 
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TWL9R79L');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./src/css/reset.min.css">
@@ -9,12 +19,17 @@
   <link rel="stylesheet" href="./src/css/icons.css">
   <link rel="preload" href="./src/images/icons/fonts/Untitled.woff2" as="font" type="font/woff2"
     crossorigin="anonymous" />
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#001F43">
   <title>astro Status</title>
   <script type="module" src="./src/js/app.js"></script>
 </head>
 
 <body>
-
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWL9R79L" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <header>
     <div class="header_lead">
       <h1 class="logo_title">astroStatus</h1>
@@ -44,7 +59,7 @@
 
 
       <!-- moon status -->
-      <details class="planets_item moon_status" open>
+      <details class="planets_item moon_status" data-gtm="accordion-open" data-gtm-planet="Moon" open>
         <summary class="status summary_list">
           <h3 class="planet_info">
             <img src="./src/images/icons/status/status-ok.png" alt="status ok" class="status_ico">
@@ -86,7 +101,7 @@
       </div>
 
       <!-- mercury status -->
-      <details class="planets_item">
+      <details class="planets_item" data-gtm="accordion-open" data-gtm-planet="Mercury">
         <summary class="status summary_list">
           <h3 class="planet_info">
             <img src="./src/images/icons/status/status-ok.png" alt="status caution" class="status_ico">
@@ -114,7 +129,7 @@
       </details>
 
       <!-- venus status -->
-      <details class="planets_item">
+      <details class="planets_item" data-gtm="accordion-open" data-gtm-planet="Venus">
         <summary class="status summary_list">
           <h3 class="planet_info">
             <img src="./src/images/icons/status/status-ok.png" alt="status caution" class="status_ico">
@@ -142,7 +157,7 @@
       </details>
 
       <!-- mars status -->
-      <details class="planets_item">
+      <details class="planets_item" data-gtm="accordion-open" data-gtm-planet="Mars">
         <summary class="status summary_list">
           <h3 class="planet_info">
             <img src="./src/images/icons/status/status-notice.png" alt="status notice" class="status_ico">
@@ -170,7 +185,7 @@
       </details>
 
       <!-- jupiter status -->
-      <details class="planets_item">
+      <details class="planets_item" data-gtm="accordion-open" data-gtm-planet="Jupiter">
         <summary class="status summary_list">
           <h3 class="planet_info">
             <img src="./src/images/icons/status/status-ok.png" alt="status caution" class="status_ico">
@@ -198,7 +213,7 @@
       </details>
 
       <!-- saturn status -->
-      <details class="planets_item">
+      <details class="planets_item" data-gtm="accordion-open" data-gtm-planet="Saturn">
         <summary class="status summary_list">
           <h3 class="planet_info">
             <img src="./src/images/icons/status/status-notice.png" alt="status notice" class="status_ico">
@@ -226,7 +241,7 @@
       </details>
 
       <!-- uranus status -->
-      <details class="planets_item">
+      <details class="planets_item" data-gtm="accordion-open" data-gtm-planet="Uranus">
         <summary class="status summary_list">
           <h3 class="planet_info">
             <img src="./src/images/icons/status/status-ok.png" alt="status ok" class="status_ico">
@@ -254,7 +269,7 @@
       </details>
 
       <!-- neptune status -->
-      <details class="planets_item">
+      <details class="planets_item" data-gtm="accordion-open" data-gtm-planet="Neptune">
         <summary class="status summary_list">
           <h3 class="planet_info">
             <img src="./src/images/icons/status/status-caution.png" alt="status caution" class="status_ico">
@@ -282,7 +297,7 @@
       </details>
 
       <!-- pluto status -->
-      <details class="planets_item">
+      <details class="planets_item" data-gtm="accordion-open" data-gtm-planet="Pluto">
         <summary class="status summary_list">
           <h3 class="planet_info">
             <img src="./src/images/icons/status/status-ok.png" alt="status ok" class="status_ico">

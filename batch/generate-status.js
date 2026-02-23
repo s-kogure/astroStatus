@@ -108,15 +108,20 @@ async function generateSchedule() {
   const year = now.getUTCFullYear();
   const month = now.getUTCMonth() + 1;
 
-  // 今月の1日〜来月末まで（2ヶ月分）
+  // 月相用: 今月の1日〜2ヶ月先（従来どおり）
   const jdStart = await ephemeris.localToJulday(year, month, 1, 0, 0, 0, 0);
-  const endMonth = month + 2 > 12 ? month + 2 - 12 : month + 2;
-  const endYear = month + 2 > 12 ? year + 1 : year;
-  const jdEnd = await ephemeris.localToJulday(endYear, endMonth, 1, 0, 0, 0, 0);
+  const endMonth2m = month + 2 > 12 ? month + 2 - 12 : month + 2;
+  const endYear2m = month + 2 > 12 ? year + 1 : year;
+  const jdEnd2m = await ephemeris.localToJulday(endYear2m, endMonth2m, 1, 0, 0, 0, 0);
 
-  // 新月・満月・蝕
+  // 天体イベント用: 今月の1日〜1年先
+  const endMonth12m = month > 12 ? month - 12 : month;
+  const endYear12m = year + 1;
+  const jdEnd12m = await ephemeris.localToJulday(endYear12m, endMonth12m, 1, 0, 0, 0, 0);
+
+  // 新月・満月・蝕（2ヶ月分）
   console.log('  月相を計算中...');
-  const lunarPhases = await findLunarPhases(jdStart, jdEnd);
+  const lunarPhases = await findLunarPhases(jdStart, jdEnd2m);
   const phases = lunarPhases.map(p => ({
     type: p.type,
     label: p.label,
@@ -129,12 +134,12 @@ async function generateSchedule() {
     } : null,
   }));
 
-  // 各天体の逆行/留/イングレス
-  console.log('  天体イベントを計算中...');
+  // 各天体の逆行/留/イングレス（1年分）
+  console.log('  天体イベントを計算中（1年分）...');
   const planetEvents = [];
   for (const def of RETROGRADE_TARGETS) {
     console.log(`    ${def.name}...`);
-    const events = await findPlanetEvents(def, jdStart, jdEnd);
+    const events = await findPlanetEvents(def, jdStart, jdEnd12m);
 
     for (const s of events.stations) {
       planetEvents.push({
@@ -165,7 +170,7 @@ async function generateSchedule() {
     generatedAt: now.toISOString(),
     period: {
       from: `${year}-${String(month).padStart(2, '0')}-01`,
-      to: `${endYear}-${String(endMonth).padStart(2, '0')}-01`,
+      to: `${endYear12m}-${String(endMonth12m).padStart(2, '0')}-01`,
     },
     lunarPhases: phases,
     planetEvents,

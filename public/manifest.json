@@ -1,0 +1,21 @@
+{
+  "name": "astroStatus",
+  "short_name": "astroStatus",
+  "description": "西洋占星術の天体ステータス情報をリアルタイムで確認",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#001F43",
+  "theme_color": "#001F43",
+  "icons": [
+    {
+      "src": "./src/images/icons/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./src/images/icons/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
