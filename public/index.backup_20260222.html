@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>astroStatus</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
       background: #0a0e17;
@@ -15,16 +21,19 @@
       margin: 0 auto;
       line-height: 1.6;
     }
+
     h1 {
       color: #e2e8f0;
       font-size: 1.4rem;
       margin-bottom: 4px;
     }
+
     .generated-at {
       font-size: 0.75rem;
       color: #64748b;
       margin-bottom: 24px;
     }
+
     h2 {
       color: #94a3b8;
       font-size: 0.85rem;
@@ -36,7 +45,10 @@
     }
 
     /* 天体リスト */
-    .planet-list { list-style: none; }
+    .planet-list {
+      list-style: none;
+    }
+
     .planet-item {
       display: flex;
       justify-content: space-between;
@@ -44,9 +56,21 @@
       border-bottom: 1px solid #1e293b;
       font-size: 0.9rem;
     }
-    .planet-name { color: #e2e8f0; min-width: 60px; }
-    .planet-sign { color: #7dd3fc; }
-    .planet-degree { color: #64748b; font-size: 0.8rem; }
+
+    .planet-name {
+      color: #e2e8f0;
+      min-width: 60px;
+    }
+
+    .planet-sign {
+      color: #7dd3fc;
+    }
+
+    .planet-degree {
+      color: #64748b;
+      font-size: 0.8rem;
+    }
+
     .planet-retro {
       color: #fb923c;
       font-weight: bold;
@@ -60,16 +84,19 @@
       margin: 8px 0;
       font-size: 0.9rem;
     }
+
     .void-active {
       background: #2d1b0e;
       border: 1px solid #92400e;
       color: #fbbf24;
     }
+
     .void-inactive {
       background: #0c1a0e;
       border: 1px solid #14532d;
       color: #4ade80;
     }
+
     .void-upcoming {
       padding: 6px 0;
       border-bottom: 1px solid #1e293b;
@@ -82,8 +109,16 @@
       border-bottom: 1px solid #1e293b;
       font-size: 0.85rem;
     }
-    .event-date { color: #64748b; font-size: 0.8rem; }
-    .event-label { color: #e2e8f0; }
+
+    .event-date {
+      color: #64748b;
+      font-size: 0.8rem;
+    }
+
+    .event-label {
+      color: #e2e8f0;
+    }
+
     .eclipse-badge {
       background: #7f1d1d;
       color: #fca5a5;
@@ -92,14 +127,30 @@
       font-size: 0.75rem;
       font-weight: bold;
     }
-    .station-retro { color: #fb923c; }
-    .station-direct { color: #4ade80; }
-    .ingress-label { color: #7dd3fc; }
 
-    .loading { color: #64748b; font-style: italic; }
-    .error { color: #f87171; }
+    .station-retro {
+      color: #fb923c;
+    }
+
+    .station-direct {
+      color: #4ade80;
+    }
+
+    .ingress-label {
+      color: #7dd3fc;
+    }
+
+    .loading {
+      color: #64748b;
+      font-style: italic;
+    }
+
+    .error {
+      color: #f87171;
+    }
   </style>
 </head>
+
 <body>
   <h1>astroStatus</h1>
   <div class="generated-at" id="generatedAt">読み込み中...</div>
@@ -253,4 +304,5 @@
     loadData();
   </script>
 </body>
+
 </html>

@@ -1,0 +1,22 @@
+{
+  "name": "astrostatus",
+  "version": "1.0.0",
+  "description": "astroStatus project tools",
+  "main": "index.js",
+  "scripts": {
+    "sass": "gulp sass",
+    "build": "gulp build",
+    "watch": "gulp watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^5.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^2.1.0",
+    "gulp-sass": "^6.0.1",
+    "sass": "^1.97.3"
+  }
+}
