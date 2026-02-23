@@ -1,0 +1,125 @@
+{
+  "generatedAt": "2026-02-21T03:22:45.937Z",
+  "period": {
+    "from": "2026-02-01",
+    "to": "2026-04-01"
+  },
+  "lunarPhases": [
+    {
+      "type": "full_moon",
+      "label": "満月",
+      "utc": "2026-02-01T22:09:11Z",
+      "moonSign": "獅子座",
+      "sunSign": "水瓶座",
+      "eclipse": null
+    },
+    {
+      "type": "new_moon",
+      "label": "新月",
+      "utc": "2026-02-17T12:01:06Z",
+      "moonSign": "水瓶座",
+      "sunSign": "水瓶座",
+      "eclipse": {
+        "type": "solar",
+        "label": "日食"
+      }
+    },
+    {
+      "type": "full_moon",
+      "label": "満月",
+      "utc": "2026-03-03T11:37:52Z",
+      "moonSign": "乙女座",
+      "sunSign": "魚座",
+      "eclipse": {
+        "type": "lunar",
+        "label": "月食"
+      }
+    },
+    {
+      "type": "new_moon",
+      "label": "新月",
+      "utc": "2026-03-19T01:23:26Z",
+      "moonSign": "魚座",
+      "sunSign": "魚座",
+      "eclipse": null
+    }
+  ],
+  "planetEvents": [
+    {
+      "type": "station_direct",
+      "planet": "天王星",
+      "utc": "2026-02-04T02:33:20Z",
+      "sign": "牡牛座",
+      "degreeInSign": 27.46
+    },
+    {
+      "type": "ingress",
+      "planet": "水星",
+      "utc": "2026-02-06T22:48:00Z",
+      "fromSign": "水瓶座",
+      "toSign": "魚座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "金星",
+      "utc": "2026-02-10T10:18:34Z",
+      "fromSign": "水瓶座",
+      "toSign": "魚座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "土星",
+      "utc": "2026-02-14T00:11:30Z",
+      "fromSign": "魚座",
+      "toSign": "牡羊座",
+      "retrograde": false
+    },
+    {
+      "type": "station_retrograde",
+      "planet": "水星",
+      "utc": "2026-02-26T06:48:10Z",
+      "sign": "魚座",
+      "degreeInSign": 22.57
+    },
+    {
+      "type": "ingress",
+      "planet": "火星",
+      "utc": "2026-03-02T14:15:47Z",
+      "fromSign": "水瓶座",
+      "toSign": "魚座",
+      "retrograde": false
+    },
+    {
+      "type": "ingress",
+      "planet": "金星",
+      "utc": "2026-03-06T10:45:42Z",
+      "fromSign": "魚座",
+      "toSign": "牡羊座",
+      "retrograde": false
+    },
+    {
+      "type": "station_direct",
+      "planet": "木星",
+      "utc": "2026-03-11T03:30:05Z",
+      "sign": "蟹座",
+      "degreeInSign": 15.09
+    },
+    {
+      "type": "station_direct",
+      "planet": "水星",
+      "utc": "2026-03-20T19:32:51Z",
+      "sign": "魚座",
+      "degreeInSign": 8.49
+    },
+    {
+      "type": "ingress",
+      "planet": "金星",
+      "utc": "2026-03-30T16:00:48Z",
+      "fromSign": "牡羊座",
+      "toSign": "牡牛座",
+      "retrograde": false
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+!public/
+
+specification.md
+issues/
+task_report/
+horary-app_data/
+materials/
+
+# Dependencies
+node_modules/
+
+# Generated data
+public/data/
+public/tes_html
+
+# IDE / Tools
+.claude/
+.DS_Store
+
+# html_beta
+
+public/html_test/node_modules
+public/html_test/package.json
+public/html_test/package-lock.json
+public/index.backup_20260222.html
+
+# backup and gavage
+css/
