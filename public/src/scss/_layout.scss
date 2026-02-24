@@ -43,6 +43,7 @@ header {
   padding-top: $size_largest;
   position: relative;
   display: block;
+  height: min( 24vh,180px);
 
     &::before {
     content: '';
@@ -50,11 +51,12 @@ header {
     top:0;
     display: block;
     width: 100%;
-    height: clamp( 24vh,35vh,15rem);
+    height: min( 24vh,180px);
     overflow: visible;
     background-color: #001F43;
     z-index: -1;
   }
+
 }
 
 
@@ -78,9 +80,9 @@ header {
 
 /*-------- MAIN CONTAINER ----------*/
 
-.planets_data__container {
-  padding-top: $size_large;
-}
+// .planets_data__container {
+//   padding-top: $size_large;
+// }
 
 
 /*-------- PLANET ITEMS ----------*/
@@ -115,7 +117,7 @@ header {
 
   .planet_info {
     width: calc( $size_largest * 1.9 );
-    flex-basis: 30.3vw;
+    // flex-basis: 30.3vw;
     position: relative;
     // width: 32vw;
   }
@@ -124,7 +126,7 @@ header {
 
 img.status_ico {
   display: inline-block;
-  height: $size_medium;
+  height: calc( $size_medium * 0.8);
   vertical-align: middle;
   margin-bottom: calc( $size_smallest * .5);
 }
@@ -153,8 +155,9 @@ data.zodiac {
 
   &::before {
     padding-right: calc( $size_smallest * 0.5 );
-    width: 1.2rem;
-    // font-size: 3.6vw;
+    width: 1.6rem;
+    display: inline-block;
+    text-align: center;
     font-variation-settings: 'width' 16;
   }
 }
@@ -167,7 +170,8 @@ data.zodiac {
 
   &.retrograde {
     box-sizing: content-box;
-    width: $size_medium;
+    // width: $size_medium;
+    width: $size_small;
     padding-left: 0.25vw;
     font-weight: bold;
     line-height: 1;
@@ -217,7 +221,8 @@ data.zodiac {
 }
 
 .progress_status.prograde + .dignity_label {
-  margin-left: calc( $size_medium + 2vw );
+  margin-left: calc( $size_small * 2 );
+  // margin-left: calc( $size_medium + 2vw );
 }
 
 .toggle_btn {
@@ -293,7 +298,7 @@ data.zodiac {
   .planets_data__container {
     max-width: 768px;
     margin: auto;
-    padding-top: $size_largest;
+    // padding-top: $size_largest;
   }
 
   .progress_status {
@@ -318,9 +323,10 @@ data.zodiac {
 .background_effects {
   position: absolute;
   top: 0;
-      display: block;
-    width: 100%;
-  height: clamp( 24vh,35vh,15rem);
+  display: block;
+  width: 100%;
+  // height: clamp( 24vh,35vh,15rem);
+  height: min( 24vh,180px);
   // background-color: midnightblue;
   z-index: -1;
   display: block;
@@ -423,6 +429,14 @@ data.zodiac {
 
 }
 
+  @media screen and (min-width:768px) {
+
+    header,
+    header::before,
+    .background_effects {
+      height: min( 240px , 24rem );
+    }
+  }
 /*--------- USAGE ---------------*/
 
 
