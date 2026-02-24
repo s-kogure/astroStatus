@@ -16,6 +16,8 @@ public/tes_html
 
 # IDE / Tools
 .claude/
+CLAUDE.md
+AGENTS.md
 .DS_Store
 
 # html_beta
