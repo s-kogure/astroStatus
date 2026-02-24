@@ -52,6 +52,7 @@ header {
   padding-top: min(16.3vw, 64px);
   position: relative;
   display: block;
+  height: min(24vh, 180px);
 }
 header::before {
   content: "";
@@ -59,7 +60,7 @@ header::before {
   top: 0;
   display: block;
   width: 100%;
-  height: clamp(24vh, 35vh, 15rem);
+  height: min(24vh, 180px);
   overflow: visible;
   background-color: #001F43;
   z-index: -1;
@@ -83,10 +84,6 @@ header::before {
 }
 
 /*-------- MAIN CONTAINER ----------*/
-.planets_data__container {
-  padding-top: min(8.14vw, 32px);
-}
-
 /*-------- PLANET ITEMS ----------*/
 .planets_item {
   display: block;
@@ -115,13 +112,12 @@ header::before {
 }
 .summary_list .planet_info {
   width: calc(min(16.3vw, 64px) * 1.9);
-  flex-basis: 30.3vw;
   position: relative;
 }
 
 img.status_ico {
   display: inline-block;
-  height: min(4.07vw, 16px);
+  height: calc(min(4.07vw, 16px) * 0.8);
   vertical-align: middle;
   margin-bottom: calc(min(2.04vw, 8px) * 0.5);
 }
@@ -147,7 +143,9 @@ data.zodiac {
 }
 data.zodiac::before {
   padding-right: calc(min(2.04vw, 8px) * 0.5);
-  width: 1.2rem;
+  width: 1.6rem;
+  display: inline-block;
+  text-align: center;
   font-variation-settings: "width" 16;
 }
 
@@ -156,7 +154,7 @@ data.zodiac::before {
 }
 .progress_status.retrograde {
   box-sizing: content-box;
-  width: min(4.07vw, 16px);
+  width: min(3.07vw, 12px);
   padding-left: 0.25vw;
   font-weight: bold;
   line-height: 1;
@@ -198,7 +196,7 @@ data.zodiac::before {
 }
 
 .progress_status.prograde + .dignity_label {
-  margin-left: calc(min(4.07vw, 16px) + 2vw);
+  margin-left: calc(min(3.07vw, 12px) * 2);
 }
 
 .toggle_btn {
@@ -261,7 +259,6 @@ data.zodiac::before {
   .planets_data__container {
     max-width: 768px;
     margin: auto;
-    padding-top: min(16.3vw, 64px);
   }
   .progress_status.retrograde {
     align-self: center;
@@ -279,7 +276,7 @@ data.zodiac::before {
   top: 0;
   display: block;
   width: 100%;
-  height: clamp(24vh, 35vh, 15rem);
+  height: min(24vh, 180px);
   z-index: -1;
   display: block;
   overflow: hidden;
@@ -354,6 +351,13 @@ data.zodiac::before {
   transform: scale(0.8);
 }
 
+@media screen and (min-width: 768px) {
+  header,
+  header::before,
+  .background_effects {
+    height: min(240px, 24rem);
+  }
+}
 /*--------- USAGE ---------------*/
 .usage {
   width: 100%;
