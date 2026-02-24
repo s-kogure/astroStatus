@@ -5,10 +5,13 @@
 ![Node.js](https://img.shields.io/badge/Node.js-≥20.11-339933?logo=node.js&logoColor=white)
 ![Swiss Ephemeris](https://img.shields.io/badge/Swiss_Ephemeris-swisseph-264653)
 ![PWA](https://img.shields.io/badge/PWA-ready-5A0FC8?logo=pwa&logoColor=white)
-![License](https://img.shields.io/badge/License-ISC-blue)
+![License](https://img.shields.io/badge/License-CC_BY--NC_4.0-blue)
 
-<!-- スクリーンショットが用意できたらここに追加 -->
-<!-- ![Screenshot](docs/screenshot.png) -->
+<p align="center">
+  <img src="readme_images/mobile_size.png" alt="Mobile" height="420">
+  <img src="readme_images/768_portrait.png" alt="Tablet" height="420">
+  <img src="readme_images/1024_landscape.png" alt="Desktop" height="420">
+</p>
 
 ## Overview
 
@@ -150,7 +153,6 @@ node batch/generate-status.js
 
 - [ ] 計算ロジックのnpmパッケージ化・公開（`@astroquery/astro-core`として別リポジトリと並行で整備中）
 - [ ] 通知設定のユーザーカスタマイズ（通知天体の選択、時間帯設定）
-- [ ] 多言語対応（英語UI）
 
 ## Related
 
@@ -158,4 +160,6 @@ node batch/generate-status.js
 
 ## License
 
-ISC
+This work is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
+
+非商用での利用・改変・再配布は自由です。商用利用をご検討の場合は事前にご相談ください。

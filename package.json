@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "CC-BY-NC-4.0",
   "devDependencies": {
     "gulp": "^5.0.1",
     "gulp-clean-css": "^4.3.0",
