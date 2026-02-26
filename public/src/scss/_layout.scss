@@ -258,7 +258,6 @@ data.zodiac {
   pointer-events: auto;
 }
 
-
 /*-------- PLANET STATUS ----------*/
 
 .detail_item {
@@ -273,6 +272,22 @@ data.zodiac {
   h4::after {
     content: ":";
     padding-right: $size_smallest;
+  }
+
+  &.void {
+    padding: 0.25rem;
+    width: min(100%,32rem);
+    justify-content: center;
+    font-weight: bold;
+    border: 1px solid var(--color-normally);
+  }
+
+  &.void.is-void {
+    border: 1px solid var(--color-warn);
+    border-radius: 2px;
+    font-weight: normal;
+    justify-content: flex-start;
+    padding: 0.25rem 0.5rem;
   }
 }
 

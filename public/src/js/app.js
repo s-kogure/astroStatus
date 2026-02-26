@@ -258,10 +258,14 @@ function renderMoonDetails(card, current, schedule, nowMs) {
   );
 
   if (current?.void?.isVoid) {
+    const voidItem = card.querySelector('.detail_item.void');
+    if (voidItem) voidItem.classList.add('is-void');//void中はliエレメントに装飾
     const endsAt = current.void.endsAt ? formatJst(current.void.endsAt) : '終了時刻未定';
-    setText(card, '.void data', `現在ボイド中 (${current.void.moonSign}) / 終了 ${endsAt}`);
+    setText(card, '.void data', `ボイド中 (${current.void.moonSign}) / 終了 ${endsAt}`);
   } else {
-    setText(card, '.void data', 'none');
+    const voidItem = card.querySelector('.detail_item.void');
+    if (voidItem) voidItem.classList.remove('is-void');
+    setText(card, '.void data', 'void  is none');
   }
 
   if (eclipse) {
