@@ -23,10 +23,8 @@
   <link rel="icon" type="image/png" href="./src/images/favicon.png">
   <link rel="apple-touch-icon" href="./src/images/pwa_android.png">
 
-  <!-- cache control -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
+  <!-- cache control: SW の Stale-While-Revalidate + Nginx ヘッダーで制御 -->
+  <!-- meta http-equiv の Cache-Control はブラウザに無視されるため削除済み -->
 
   <!-- SEO tags -->
   <link rel="canonical" href="https://astro-query.com/astro-status/" />
@@ -99,16 +97,15 @@
         </summary>
         <ul class="suatus detail_list">
           <li class="detail_item void">
-            <h4>void</h4>
-            <data>none</data>
-          </li>
-          <li class="detail_item moon_phase">
-            <h4>次の満月</h4>
-            <data>mm月dd日(曜) hh:mm</data>
+            <data>void is none</data>
           </li>
           <li class="detail_item nextvoid">
             <h4>next void</h4>
             <data>mm月dd日(曜) hh:mm <wbr>〜 mm月dd日(曜) hh:mm</data>
+          </li>
+          <li class="detail_item moon_phase">
+            <h4>次の満月</h4>
+            <data>mm月dd日(曜) hh:mm</data>
           </li>
           <li class="detail_item eclipse">
             <h4>eclipse</h4>
