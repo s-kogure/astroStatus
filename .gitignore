@@ -13,6 +13,11 @@ node_modules/
 public/data/
 packages/astro-status/package-lock.json
 public/tes_html
+.env
+package-lock.json.bak
+package.json.bak
+public/data/current.json
+public/data/schedule.json
 
 # IDE / Tools
 .claude/
