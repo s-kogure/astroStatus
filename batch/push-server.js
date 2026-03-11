@@ -17,6 +17,8 @@
  *   node batch/push-server.js
  */
 
+require('dotenv').config({ path: require('node:path').resolve(__dirname, '..', '.env') });
+
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');

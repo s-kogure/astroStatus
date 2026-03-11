@@ -18,6 +18,8 @@
  *   node batch/push-notify.js
  */
 
+require('dotenv').config({ path: require('node:path').resolve(__dirname, '..', '.env') });
+
 const fs = require('node:fs');
 const path = require('node:path');
 
